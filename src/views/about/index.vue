@@ -1,7 +1,7 @@
 <template>
-    <div>
-        asd
-    </div>
+  <div>
+      about
+  </div>
 </template>
 
 <script lang="ts">

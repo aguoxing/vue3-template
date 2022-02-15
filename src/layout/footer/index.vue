@@ -1,13 +1,19 @@
 <template>
-  <div>
+  <div class="footer-container">
     footer
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #909399;
+  color: white;
+}
 </style>
