@@ -1,8 +1,8 @@
 <template>
   <div class="app-main">
-    <Header/>
-    <router-view class="container" :style="{'min-height': fullHeight+'px'}"></router-view>
-    <Footer/>
+    <Header />
+    <router-view class="container" :style="{ 'min-height': fullHeight + 'px' }"></router-view>
+    <Footer />
     <el-backtop />
   </div>
 </template>

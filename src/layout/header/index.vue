@@ -3,15 +3,15 @@
     <div class="header-container">
       <div class="nav-container container">
         <div class="nav-logo">
-          <img src="@/assets/logo.png" @click="goto('/home')" style="width: 30px;height: 30px" />
+          <img src="@/assets/logo.png" @click="goto('/home')" style="width: 30px; height: 30px" />
         </div>
         <div class="nav-menu">
           <div
-              class="menu-item"
-              v-for="(menu,index) in navMenus"
-              v-text="menu.name"
-              :class="{'menu-item-bgc' : currentPath === menu.path}"
-              @click="goto(menu.path)"
+            class="menu-item"
+            v-for="(menu, index) in navMenus"
+            v-text="menu.name"
+            :class="{ 'menu-item-bgc': currentPath === menu.path }"
+            @click="goto(menu.path)"
           ></div>
         </div>
         <div class="nav-menu-mobile">
@@ -19,10 +19,9 @@
             <div class="menu-btn">menu</div>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item
-                    v-for="(menu,index) in navMenus"
-                    @click="goto(menu.path)"
-                >{{menu.name}}</el-dropdown-item>
+                <el-dropdown-item v-for="(menu, index) in navMenus" @click="goto(menu.path)">{{
+                  menu.name
+                }}</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -33,14 +32,14 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from "vue-router"
-import {ref} from "vue";
+import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 
 const navMenus = [
-  {name: '文章', path: '/blog/article'},
-  {name: '分类', path: '/blog/category'},
-  {name: '归档', path: '/blog/timeline'},
-  {name: '关于', path: '/blog/about'}
+  { name: '文章', path: '/blog/article' },
+  { name: '分类', path: '/blog/category' },
+  { name: '归档', path: '/blog/timeline' },
+  { name: '关于', path: '/blog/about' }
 ]
 const currentPath = ref('/blog/article')
 

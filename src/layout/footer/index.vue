@@ -1,12 +1,8 @@
 <template>
-  <div class="footer-container">
-    footer
-  </div>
+  <div class="footer-container">footer</div>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .footer-container {
