@@ -1,13 +1,11 @@
 <template>
   <div>
-    category
+    asd
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: "index"
-}
+<script lang="ts" setup>
+
 </script>
 
 <style scoped>

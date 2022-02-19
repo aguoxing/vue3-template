@@ -15,5 +15,7 @@
   justify-content: center;
   background-color: #909399;
   color: white;
+  height: 100px;
+  margin-top: 10px;
 }
 </style>
