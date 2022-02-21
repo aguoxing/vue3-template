@@ -155,3 +155,11 @@ html {
     display: none !important;
   }
 }
+
+.horizontal-divider {
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin: 5px 0;
+  border-bottom: 1px solid #dcdfe6;
+}

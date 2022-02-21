@@ -57,7 +57,19 @@ const routes: Array<RouteRecordRaw> = [
         meta: { title: '关于', icon: 'dashboard', affix: true }
       }
     ]
-  }
+  },
+  {
+    path: '/blog/article',
+    component: Layout,
+    children: [
+      {
+        path: 'detail/:id',
+        component: () => import('@/views/blog/article/detail.vue'),
+        name: 'detail',
+        meta: {title: '详情', activeMenu: '/blog/article'}
+      }
+    ]
+  },
 ]
 
 const routerHistory = createWebHistory()
