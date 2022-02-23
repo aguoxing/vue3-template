@@ -1,32 +1,34 @@
 <template>
-  <div class="list-container">
-    <div
-      class="item-container"
-      v-for="(article,index) in 10"
-      :key="index"
-      @click="goto(article)"
-    >
-      <div class="item-title">
-        标题-{{article}}
+  <div class="content-container">
+    <div class="list-container">
+      <div
+        class="item-container"
+        v-for="(article,index) in 10"
+        :key="index"
+        @click="goto(article)"
+      >
+        <div class="item-title">
+          标题-{{article}}
+        </div>
+        <div class="item-summary">
+          摘要-{{article}}
+        </div>
+        <div class="item-footer">
+          <div class="footer-item">admin</div>
+          <div class="footer-item">2022-02-21</div>
+          <div class="footer-item">测试</div>
+        </div>
+        <div class="horizontal-divider"></div>
       </div>
-      <div class="item-summary">
-        摘要-{{article}}
+      <div class="pagination-container">
+        <el-pagination
+          v-model:currentPage="queryParams.pageNum"
+          :page-size="queryParams.pageSize"
+          layout="prev, pager, next"
+          :total="total"
+          @current-change="handleCurrentChange"
+        ></el-pagination>
       </div>
-      <div class="item-footer">
-        <div class="footer-item">admin</div>
-        <div class="footer-item">2022-02-21</div>
-        <div class="footer-item">测试</div>
-      </div>
-      <div class="horizontal-divider"></div>
-    </div>
-    <div class="pagination-container">
-      <el-pagination
-        v-model:currentPage="queryParams.pageNum"
-        :page-size="queryParams.pageSize"
-        layout="prev, pager, next"
-        :total="total"
-        @current-change="handleCurrentChange"
-      ></el-pagination>
     </div>
   </div>
 </template>
@@ -55,9 +57,12 @@ const goto = (val: string) => {
 </script>
 
 <style scoped>
-.list-container {
+.content-container {
   display: flex;
   flex-direction: column;
+}
+.list-container {
+  margin: 0 10px;
 }
 .item-container {
   display: flex;

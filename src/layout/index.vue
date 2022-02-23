@@ -1,16 +1,14 @@
 <template>
   <div class="app-main">
-    <Header />
-    <router-view class="container" :style="{ 'min-height': fullHeight + 'px' }"></router-view>
-    <Footer />
-    <el-backtop />
+    <Header/>
+    <router-view class="container"></router-view>
+    <Footer/>
   </div>
 </template>
 
 <script lang="ts" setup>
-import Header from './header/index.vue'
-import Footer from './footer/index.vue'
-const fullHeight = document.documentElement.clientHeight - 160
+import Header from '@/layout/components/header/index.vue'
+import Footer from '@/layout/components/footer/index.vue'
 </script>
 
 <style lang="scss" scoped>

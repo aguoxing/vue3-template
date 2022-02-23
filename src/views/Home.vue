@@ -1,17 +1,11 @@
 <template>
   <div class="home-container">
-    <div @click="goto('/blog')" v-text="'blog'"></div>
+    Home
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
 
-const router = useRouter()
-
-const goto = (url: any) => {
-  router.push(url)
-}
 </script>
 
 <style lang="scss">

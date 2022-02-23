@@ -1,13 +1,27 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-const Layout = () => import('@/layout/index.vue')
+const homeLayout = () => import('@/layout/index.vue')
+const blogLayout = () => import('@/layout/blog/index.vue')
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
     name: '首页',
-    component: () => import('@/views/Home.vue'),
-    meta: { title: '首页', icon: 'dashboard', affix: true }
+    component: homeLayout,
+    redirect: '/home',
+    children: [
+      {
+        path: '/home',
+        name: '首页',
+        component: () => import('@/views/Home.vue'),
+        meta: { title: '首页', icon: 'dashboard', affix: true }
+      },
+      {
+        path: '/blog',
+        name: '博客',
+        redirect: '/blog/article'
+      }
+    ]
   },
   {
     path: '/login',
@@ -29,7 +43,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/blog',
-    component: Layout,
+    component: blogLayout,
     redirect: '/blog/article',
     children: [
       {
@@ -60,7 +74,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/blog/article',
-    component: Layout,
+    component: blogLayout,
     children: [
       {
         path: 'detail/:id',
