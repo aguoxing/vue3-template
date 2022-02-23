@@ -4,50 +4,23 @@
   </svg>
 </template>
 
-<script>
-export default defineComponent({
-  props: {
-    iconClass: {
-      type: String,
-      required: true
-    },
-    className: {
-      type: String,
-      default: ''
-    },
-    color: {
-      type: String,
-      default: ''
-    },
-  },
-  setup(props) {
-    return {
-      iconName: computed(() => `#icon-${props.iconClass}`),
-      svgClass: computed(() => {
-        if (props.className) {
-          return `svg-icon ${props.className}`
-        }
-        return 'svg-icon'
-      })
-    }
-  }
-})
-</script>
-
 <script lang="ts" setup>
 const props = defineProps({
-  child: {
-    type:String, // 参数类型
-    default: 1, //默认值
-    required: true, //是否必传
-    validator: value => {
-      return value >= 0 // 除了验证是否符合type的类型，此处再判断该值结果是否符合验证
-    }
+  iconClass: {
+    type: String,
+    required: true
   },
-  sda: String, //undefined
-  strData: String,
-  arrFor: Array
+  className: {
+    type: String,
+    default: ''
+  },
+  color: {
+    type: String,
+    default: ''
+  }
 })
+const iconName = '#icon-${props.iconClass}'
+const svgClass = props.className ? `svg-icon ${props.className}` : 'svg-icon'
 </script>
 
 <style scoped lang="scss">
