@@ -3,6 +3,9 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 const homeLayout = () => import('@/layout/index.vue')
 const blogLayout = () => import('@/layout/blog/index.vue')
 
+/**
+ * https://router.vuejs.org/zh/guide/
+ */
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
@@ -14,7 +17,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/home',
         name: '首页',
         component: () => import('@/views/Home.vue'),
-        meta: { title: '首页', icon: 'dashboard', affix: true }
+        meta: { title: '首页', icon: 'dashboard' }
       },
       {
         path: '/blog',
@@ -27,19 +30,19 @@ const routes: Array<RouteRecordRaw> = [
     path: '/login',
     name: '登录',
     component: () => import('@/views/Login.vue'),
-    meta: { title: '登录', icon: 'dashboard', affix: true }
+    meta: { title: '登录', icon: 'dashboard' }
   },
   {
     path: '/register',
     name: '注册',
     component: () => import('@/views/Register.vue'),
-    meta: { title: '注册', icon: 'dashboard', affix: true }
+    meta: { title: '注册', icon: 'dashboard' }
   },
   {
     path: '/chat',
     name: '聊天',
     component: () => import('@/views/Chat.vue'),
-    meta: { title: '聊天', icon: 'dashboard', affix: true }
+    meta: { title: '聊天', icon: 'dashboard' }
   },
   {
     path: '/blog',
@@ -50,25 +53,25 @@ const routes: Array<RouteRecordRaw> = [
         path: '/blog/article',
         name: '文章',
         component: () => import('@/views/blog/article/index.vue'),
-        meta: { title: '文章', icon: 'dashboard', affix: true }
+        meta: { title: '文章', icon: 'dashboard' }
       },
       {
         path: '/blog/category',
         name: '分类',
         component: () => import('@/views/blog/category/index.vue'),
-        meta: { title: '分类', icon: 'dashboard', affix: true }
+        meta: { title: '分类', icon: 'dashboard' }
       },
       {
         path: '/blog/timeline',
         name: '归档',
         component: () => import('@/views/blog/timeline/index.vue'),
-        meta: { title: '归档', icon: 'dashboard', affix: true }
+        meta: { title: '归档', icon: 'dashboard' }
       },
       {
         path: '/blog/about',
         name: '关于',
         component: () => import('@/views/blog/about/index.vue'),
-        meta: { title: '关于', icon: 'dashboard', affix: true }
+        meta: { title: '关于', icon: 'dashboard' }
       }
     ]
   },
