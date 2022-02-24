@@ -5,6 +5,8 @@
 </template>
 
 <script lang="ts" setup>
+import {computed} from 'vue'
+
 const props = defineProps({
   iconClass: {
     type: String,
@@ -19,24 +21,19 @@ const props = defineProps({
     default: ''
   }
 })
-const iconName = '#icon-${props.iconClass}'
-const svgClass = props.className ? `svg-icon ${props.className}` : 'svg-icon'
+const iconName = computed(() => {
+  return `#icon-${props.iconClass}`
+})
+const svgClass = computed(() => {
+  return props.className ? `svg-icon ${props.className}` : `svg-icon`
+})
 </script>
 
 <style scoped lang="scss">
-.sub-el-icon,
-.nav-icon {
-  display: inline-block;
-  font-size: 15px;
-  margin-right: 12px;
-  position: relative;
-}
-
 .svg-icon {
   width: 1em;
   height: 1em;
-  position: relative;
   fill: currentColor;
-  vertical-align: -2px;
+  vertical-align: middle;
 }
 </style>

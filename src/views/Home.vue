@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    Home
+    <svg-icon icon-class="404"></svg-icon>
   </div>
 </template>
 
