@@ -2110,6 +2110,11 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+md-editor-v3@^1.10.2:
+  version "1.10.2"
+  resolved "https://registry.npmmirror.com/md-editor-v3/-/md-editor-v3-1.10.2.tgz#787bd8d684fc962b29e67b1f33b96cae239f66f6"
+  integrity sha512-wuC3mQuWKUcKkEnND9Mzn5aDvJx/vTEJaRZcHXJL1v7WkQy+TiFkhSVKorSN/W/3jPd5H6Q+txorbK7eOsAcTQ==
+
 mdn-data@2.0.14:
   version "2.0.14"
   resolved "https://registry.npmmirror.com/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"

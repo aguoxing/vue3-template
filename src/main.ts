@@ -11,6 +11,9 @@ import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 // import elementIcons from '@/components/SvgIcon/svgicon.ts'
 
+// markdown editor
+import MarkdownEditor from '@/components/MarkdownEditor/index.vue'
+
 const app = createApp(App)
 // 创建pinia 实例
 const pinia = createPinia()
@@ -21,6 +24,7 @@ app.use(router)
 app.use(ElementPlus)
 // app.use(elementIcons)
 
+app.component('markdown', MarkdownEditor)
 app.component('svg-icon', SvgIcon)
 
 app.mount('#app')

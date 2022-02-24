@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{articleId}}
+    <markdown :text="text"/>
   </div>
 </template>
 
@@ -9,6 +9,15 @@ import {useRouter} from "vue-router"
 
 const router = useRouter()
 const articleId = router.currentRoute.value.params.id
+
+const text = '# 示例' +
+  '\n' +
+  '## 请求参数' +
+  '\n' +
+  '### test'
+  '\n' +
+  '> test'
+
 
 </script>
 
