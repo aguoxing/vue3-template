@@ -24,7 +24,10 @@
         <el-pagination
           v-model:currentPage="queryParams.pageNum"
           :page-size="queryParams.pageSize"
-          layout="prev, pager, next"
+          :page-count="8"
+          layout="pager"
+          :background="true"
+          :hide-on-single-page="true"
           :total="total"
           @current-change="handleCurrentChange"
         ></el-pagination>
@@ -74,19 +77,22 @@ const goto = (val: string) => {
 }
 .item-title {
   font-size: 18px;
+  color: #333333;
 }
 .item-title:hover {
   color: #42b983;
 }
 .item-summary {
   font-size: 14px;
-  margin: 3px 0;
+  margin: 5px 0;
+  color: #71717A;
 }
 .item-footer {
   display: flex;
   flex-direction: row;
   font-size: 14px;
   align-items: center;
+  color: #64748B;
 }
 .footer-item {
   margin-right: 5px;

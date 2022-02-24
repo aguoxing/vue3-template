@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row :gutter="10">
-      <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18">
+      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <div class="left-container">
           <div class="index-loop"></div>
           <div class="content-container">
@@ -9,9 +9,9 @@
           </div>
         </div>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
-        <div class="right-container">asdsdf</div>
-      </el-col>
+<!--      <el-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">-->
+<!--        <div class="right-container">asdsdf</div>-->
+<!--      </el-col>-->
     </el-row>
   </div>
 </template>

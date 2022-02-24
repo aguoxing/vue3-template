@@ -3,7 +3,7 @@
     <div class="header-container">
       <div class="nav-container container">
         <div class="nav-logo">
-          <img src="@/assets/logo.png" @click="goto('/blog')" style="width: 30px; height: 30px" />
+          <img src="@/assets/logo.png" @click="goto('/blog/article')" style="width: 30px; height: 30px" />
         </div>
         <div class="nav-menu">
           <div
