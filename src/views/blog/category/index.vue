@@ -1,7 +1,16 @@
 <template>
-  <div>category</div>
+  <div class="content-container">
+    <div class="m10">
+      category
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup></script>
 
-<style scoped></style>
+<style scoped>
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
+</style>

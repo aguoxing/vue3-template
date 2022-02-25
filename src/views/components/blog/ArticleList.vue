@@ -1,6 +1,6 @@
 <template>
   <div class="content-container">
-    <div class="list-container">
+    <div class="m10">
       <div
         class="item-container"
         v-for="(article,index) in 10"
@@ -63,9 +63,6 @@ const goto = (val: string) => {
 .content-container {
   display: flex;
   flex-direction: column;
-}
-.list-container {
-  margin: 0 10px;
 }
 .item-container {
   display: flex;

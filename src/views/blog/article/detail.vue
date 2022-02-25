@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <markdown :text="text"/>
+  <div class="content-container">
+    <div class="m10">
+      <markdown :text="text"/>
+    </div>
   </div>
 </template>
 
@@ -22,5 +24,8 @@ const text = '# 示例' +
 </script>
 
 <style scoped>
-
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
 </style>

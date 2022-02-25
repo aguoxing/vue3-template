@@ -1,7 +1,16 @@
 <template>
-  <div>timeline</div>
+  <div class="content-container">
+    <div class="m10">
+      timeline
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup></script>
 
-<style scoped></style>
+<style scoped>
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
+</style>

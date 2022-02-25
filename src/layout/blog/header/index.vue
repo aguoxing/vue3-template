@@ -3,7 +3,7 @@
     <div class="header-container">
       <div class="nav-container container">
         <div class="nav-logo">
-          <img src="@/assets/logo.png" @click="goto('/blog/article')" style="width: 30px; height: 30px" />
+          <img src="@/assets/logo.png" @click="goto('/home')" style="width: 30px; height: 30px" />
         </div>
         <div class="nav-menu">
           <div
@@ -16,7 +16,9 @@
         </div>
         <div class="nav-menu-mobile">
           <el-dropdown>
-            <div class="menu-btn">menu</div>
+            <div class="menu-btn">
+              <svg-icon icon-class="menu"></svg-icon>
+            </div>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item v-for="(menu, index) in navMenus" @click="goto(menu.path)">{{
