@@ -3,16 +3,12 @@
     <div class="m10">
       <div
         class="item-container"
-        v-for="(article,index) in 10"
+        v-for="(article, index) in 10"
         :key="index"
         @click="goto(article)"
       >
-        <div class="item-title">
-          标题-{{article}}
-        </div>
-        <div class="item-summary">
-          摘要-{{article}}
-        </div>
+        <div class="item-title">标题-{{ article }}</div>
+        <div class="item-summary">摘要-{{ article }}</div>
         <div class="item-footer">
           <div class="footer-item">admin</div>
           <div class="footer-item">2022-02-21</div>
@@ -37,8 +33,8 @@
 </template>
 
 <script lang="ts" setup>
-import {reactive, ref, toRefs} from 'vue'
-import {useRouter} from "vue-router"
+import { reactive, ref, toRefs } from 'vue'
+import { useRouter } from 'vue-router'
 
 const articleList = reactive([])
 const total = ref(100)
@@ -54,9 +50,8 @@ const handleCurrentChange = (val: number) => {
 
 const router = useRouter()
 const goto = (val: string) => {
-  router.push('/blog/article/detail/'+val)
+  router.push('/blog/article/detail/' + val)
 }
-
 </script>
 
 <style scoped>
@@ -82,14 +77,14 @@ const goto = (val: string) => {
 .item-summary {
   font-size: 14px;
   margin: 5px 0;
-  color: #71717A;
+  color: #71717a;
 }
 .item-footer {
   display: flex;
   flex-direction: row;
   font-size: 14px;
   align-items: center;
-  color: #64748B;
+  color: #64748b;
 }
 .footer-item {
   margin-right: 5px;

@@ -1,8 +1,6 @@
 <template>
   <div class="content-container">
-    <div class="m10">
-      category
-    </div>
+    <div class="m10">category</div>
   </div>
 </template>
 

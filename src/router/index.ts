@@ -83,10 +83,10 @@ const routes: Array<RouteRecordRaw> = [
         path: 'detail/:id',
         component: () => import('@/views/blog/article/detail.vue'),
         name: 'detail',
-        meta: {title: '详情', activeMenu: '/blog/article'}
+        meta: { title: '详情', activeMenu: '/blog/article' }
       }
     ]
-  },
+  }
 ]
 
 const routerHistory = createWebHistory()

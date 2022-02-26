@@ -5,13 +5,13 @@
         <div class="left-container">
           <div class="index-loop"></div>
           <div class="content-container">
-            <ArticleList/>
+            <ArticleList />
           </div>
         </div>
       </el-col>
-<!--      <el-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">-->
-<!--        <div class="right-container">asdsdf</div>-->
-<!--      </el-col>-->
+      <!--      <el-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">-->
+      <!--        <div class="right-container">asdsdf</div>-->
+      <!--      </el-col>-->
     </el-row>
   </div>
 </template>

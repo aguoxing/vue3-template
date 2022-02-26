@@ -1,9 +1,7 @@
 <template>
   <div class="footer-container">
     <div class="horizontal-divider"></div>
-    <div class="footer-content">
-      Copyright ©2020-2022 blog. All Rights Reserved.
-    </div>
+    <div class="footer-content">Copyright ©2020-2022 blog. All Rights Reserved.</div>
   </div>
 </template>
 

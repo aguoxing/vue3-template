@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
-import createVitePlugins from './src/plugins/index'
+import createVitePlugins from './src/plugins/vite'
 import { resolve } from 'path' // 编辑器提示 path 模块找不到，可以yarn add @types/node --dev
 
 export default defineConfig(({ mode, command }) => {

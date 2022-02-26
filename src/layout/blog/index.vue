@@ -3,7 +3,7 @@
     <Header />
     <router-view class="container" :style="{ 'min-height': fullHeight + 'px' }"></router-view>
     <Footer />
-    <el-backtop :bottom="bottomHeight"/>
+    <el-backtop :bottom="bottomHeight" />
   </div>
 </template>
 

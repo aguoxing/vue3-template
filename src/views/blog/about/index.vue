@@ -1,8 +1,6 @@
 <template>
   <div class="content-container">
-    <div class="m10">
-      about
-    </div>
+    <div class="m10">about</div>
   </div>
 </template>
 
