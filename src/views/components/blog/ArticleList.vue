@@ -10,9 +10,9 @@
         <div class="item-title">标题-{{ article }}</div>
         <div class="item-summary">摘要-{{ article }}</div>
         <div class="item-footer">
-          <div class="footer-item">admin</div>
-          <div class="footer-item">2022-02-21</div>
-          <div class="footer-item">测试</div>
+          <div class="footer-item"><svg-icon icon-class="author"></svg-icon>admin</div>
+          <div class="footer-item"><svg-icon icon-class="date01"></svg-icon>2022-02-21</div>
+          <div class="footer-item"><svg-icon icon-class="category"></svg-icon>测试</div>
         </div>
         <div class="horizontal-divider"></div>
       </div>
@@ -87,6 +87,9 @@ const goto = (val: string) => {
   color: #64748b;
 }
 .footer-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-right: 5px;
 }
 .pagination-container {

@@ -16,6 +16,7 @@ vue-ts
 
 https://juejin.cn/post/6973288527802925092
 ```
+
 ```json
 {
    // 指定需要编译文件 否则默认当前目录下除了exclude之外的所有.ts, .d.ts,.tsx 文件
@@ -25,7 +26,7 @@ https://juejin.cn/post/6973288527802925092
    // 不编译某些文件
    "exclude": ["test.ts"],
    "compilerOptions": {
-       // 只编译修改过的文件,这个时候会生成tsconfig.tsbuildinfo,下次编译的时候会进行对比只编译修改过的文件 
+       // 只编译修改过的文件,这个时候会生成tsconfig.tsbuildinfo,下次编译的时候会进行对比只编译修改过的文件
        "incremental": true,
        // 指定 ECMAScript 目标版本: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'
        "target": "es5",
@@ -65,7 +66,7 @@ https://juejin.cn/post/6973288527802925092
        "removeComments": true,
        // 不生成编译文件，这个一般比较少用,这个build目录下将没有任何文件,但是会进行编译,有错误会抛出
        "noEmit": true,
-       // 是否引入npm包tslib中的辅助函数,__extends等 
+       // 是否引入npm包tslib中的辅助函数,__extends等
        "importHelpers": true,
        // 当target为'ES5' or 'ES3'时，为'for-of', spread, and destructuring'中的迭代器提供完全支持
        "downlevelIteration": true,
@@ -74,7 +75,7 @@ https://juejin.cn/post/6973288527802925092
        "isolatedModules": true,
        /* Strict Type-Checking Options */
        // 严格模式将会打开下面的几个选项
-       "strict": false, 
+       "strict": false,
        /* 不允许变量或函数参数具有隐式any类型,例如
        function(name) {
            return name;
@@ -106,20 +107,20 @@ https://juejin.cn/post/6973288527802925092
        "moduleResolution": "node",
        // 复杂的很 下面单独介绍这三个模块
        "baseUrl": './'
-       "paths": {},                   
+       "paths": {},
        "rootDirs": [],
        /* typeRoots用来指定声明文件或文件夹的路径列表，如果指定了此项，则只有在这里列出的声明文件才会被加载 */
        typeRoots: [],
        // types用来指定需要包含的模块，只有在这里列出的模块的声明文件才会被加载进来
        types:[],
-       // 用来指定允许从没有默认导出的模块中默认导入 
-       "allowSyntheticDefaultImports": true, 
+       // 用来指定允许从没有默认导出的模块中默认导入
+       "allowSyntheticDefaultImports": true,
        // 通过为导入内容创建命名空间，实现CommonJS和ES模块之间的互操作性
        "esModuleInterop": true ,
        // 不把符号链接解析为真实路径，具体可以了解下webpack和node.js的symlink相关知识
        "preserveSymlinks": true,
        "allowUmdGlobalAccess": true,
-       
+
        // sourceRoot用于指定调试器应该找到TypeScript文件而不是源文件的位置，这个值会被写进.map文件里
        "sourceRoot": '',
        // mapRoot用于指定调试器找到映射文件而非生成文件的位置，指定map文件的根路径，该选项会影响.map文件中的sources属性
@@ -128,10 +129,10 @@ https://juejin.cn/post/6973288527802925092
        "inlineSourceMap": true,
        // inlineSources用于指定是否进一步将ts文件的内容也包含到输出文件中
        "inlineSources": true,
-       
+
        // experimentalDecorators用于指定是否启用实验性的装饰器特性
        "experimentalDecorators": true,
-       
+
        // emitDecoratorMetadata用于指定是否为装上去提供元数据支持，关于元数据，也是ES6的新标准，可以通过Reflect提供的静态方法获取元数据，如果需要使用Reflect的一些方法，需要引用ES2015.Reflect这个库
        "emitDecoratorMetadata": true,
        // compileOnSave的值是true或false，如果设为true，在我们编辑了项目中的文件保存的时候，编辑器会根据tsconfig.json中的配置重新生成文件，不过这个要编辑器支持
