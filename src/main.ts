@@ -12,7 +12,7 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 // import elementIcons from '@/components/SvgIcon/svgicon.ts'
 
 // markdown editor
-import MarkdownEditor from '@/components/MarkdownEditor/index.vue'
+import mdeditor from '@/components/mdeditor/index.vue'
 
 const app = createApp(App)
 // 创建pinia 实例
@@ -24,7 +24,7 @@ app.use(router)
 app.use(ElementPlus)
 // app.use(elementIcons)
 
-app.component('markdown', MarkdownEditor)
+app.component('md-editor', mdeditor)
 app.component('svg-icon', SvgIcon)
 
 app.mount('#app')

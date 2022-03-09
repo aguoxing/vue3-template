@@ -62,6 +62,12 @@ const routes: Array<RouteRecordRaw> = [
         meta: { title: '分类', icon: 'dashboard' }
       },
       {
+        path: '/blog/tags',
+        name: '标签',
+        component: () => import('@/views/blog/tags/index.vue'),
+        meta: { title: '标签', icon: 'dashboard' }
+      },
+      {
         path: '/blog/timeline',
         name: '归档',
         component: () => import('@/views/blog/timeline/index.vue'),

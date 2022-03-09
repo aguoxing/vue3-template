@@ -40,6 +40,7 @@ import { ref } from 'vue'
 const navMenus = [
   { name: '文章', path: '/blog/article' },
   { name: '分类', path: '/blog/category' },
+  { name: '标签', path: '/blog/tags' },
   { name: '归档', path: '/blog/timeline' },
   { name: '关于', path: '/blog/about' }
 ]
