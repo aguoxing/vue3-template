@@ -44,14 +44,15 @@ const navMenus = [
   { name: '归档', path: '/blog/timeline' },
   { name: '关于', path: '/blog/about' }
 ]
-const currentPath = ref('/blog/article')
-
 const router = useRouter()
+
+const currentPath = ref(router.currentRoute.value.path)
 
 const goto = (url: string) => {
   currentPath.value = url
   router.push(url)
 }
+
 </script>
 
 <style scoped>
