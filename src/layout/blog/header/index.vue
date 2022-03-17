@@ -9,6 +9,7 @@
           <div
             class="menu-item"
             v-for="(menu, index) in navMenus"
+            :key="index"
             v-text="menu.name"
             :class="{ 'menu-item-bgc': currentPath === menu.path }"
             @click="goto(menu.path)"
@@ -21,9 +22,12 @@
             </div>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item v-for="(menu, index) in navMenus" @click="goto(menu.path)">{{
-                  menu.name
-                }}</el-dropdown-item>
+                <el-dropdown-item
+                  v-for="(menu, index) in navMenus"
+                  :key="index"
+                  @click="goto(menu.path)"
+                  >{{ menu.name }}</el-dropdown-item
+                >
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -52,7 +56,6 @@ const goto = (url: string) => {
   currentPath.value = url
   router.push(url)
 }
-
 </script>
 
 <style scoped>

@@ -12,10 +12,11 @@ declare module 'vue' {
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElRow: typeof import('element-plus/es')['ElRow']
-    HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
+    ElTag: typeof import('element-plus/es')['ElTag']
+    MdComment: typeof import('./../components/MdEditor/MdComment.vue')['default']
     MdEditor: typeof import('./../components/MdEditor/index.vue')['default']
     SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
   }
 }
 
-export { }
+export {}

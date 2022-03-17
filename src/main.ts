@@ -6,7 +6,8 @@ import router from './router/index'
 import './assets/styles/global.scss'
 // svg图标
 import 'virtual:svg-icons-register'
-import SvgIcon from '@/components/SvgIcon/index.vue'
+// import SvgIcon from '@/components/SvgIcon/index.vue'
+// import elementIcons from '@/components/SvgIcon/svgicons.ts'
 
 // markdown editor
 // import mdeditor from '@/components/mdeditor/index.vue'

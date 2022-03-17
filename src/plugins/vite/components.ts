@@ -11,13 +11,11 @@ export default function createComponents() {
     // search for subdirectories
     deep: true,
     // resolvers for custom components
-    resolvers: [
-      ElementPlusResolver(),
-    ],
+    resolvers: [ElementPlusResolver()],
 
     // generate `components.d.ts` global declarations,
     // also accepts a path for custom filename
-    dts: "src/types/components.d.ts",
+    dts: 'src/types/components.d.ts',
 
     // Allow subdirectories as namespace prefix for components.
     directoryAsNamespace: false,
@@ -33,6 +31,6 @@ export default function createComponents() {
 
     // filters for transforming targets
     include: [/\.vue$/, /\.vue\?vue/],
-    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
+    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/]
   })
 }

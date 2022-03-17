@@ -1,8 +1,8 @@
 import createSvgIcon from './svg-icon'
 import createCompression from './compression'
 import vue from '@vitejs/plugin-vue'
-import createAutoImport from "./auto-import"
-import createComponents from "./components"
+import createAutoImport from './auto-import'
+import createComponents from './components'
 
 export default function createVitePlugins(viteEnv: any, isBuild = false) {
   const vitePlugins = [vue()]

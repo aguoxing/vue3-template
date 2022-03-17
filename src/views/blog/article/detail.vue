@@ -3,11 +3,15 @@
     <div class="m10">
       <md-editor :markdownContent="text" />
     </div>
+    <div class="m10">
+      <article-comment />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
+import ArticleComment from '../../components/blog/ArticleComment.vue'
 
 const router = useRouter()
 const articleId = router.currentRoute.value.params.id
