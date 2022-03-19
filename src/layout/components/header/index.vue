@@ -1,6 +1,6 @@
 <template>
   <el-affix>
-    <div class="header-container">
+    <div class="header-container shadow-md">
       <div class="nav-container container">
         <div class="nav-logo">
           <img src="@/assets/logo.png" @click="goto('/home')" style="width: 30px; height: 30px" />
@@ -58,7 +58,6 @@ const goto = (url: string) => {
   background-color: #ffffff;
   height: 50px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #dcdfe6;
   font-size: 14px;
 }
 .nav-container {

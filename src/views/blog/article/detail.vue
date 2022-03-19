@@ -10,14 +10,17 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import ArticleComment from '../../components/blog/ArticleComment.vue'
 
 const router = useRouter()
 const articleId = router.currentRoute.value.params.id
 
-const text = `
-# 示例1
+const text = ref('')
+
+const getArticleDetail = () => {
+  text.value = `
+  # 示例1
 - one
 
 ## 示例2
@@ -35,7 +38,12 @@ asd
 
 **big**
 
-`
+  `
+}
+
+onMounted(() => {
+  getArticleDetail()
+})
 </script>
 
 <style scoped>

@@ -15,13 +15,20 @@
       </div>
     </div>
     <div class="horizontal-divider"></div>
-    <div>
-      <md-comment />
+    <md-comment />
+    <div class="comment-btn">
+      <el-button>Comment</el-button>
     </div>
+    <div class="horizontal-divider"></div>
+    <comment-item />
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({})
+</script>
 
 <style scoped>
 .content-container {
@@ -32,5 +39,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.comment-btn {
+  margin: 10px 0;
 }
 </style>

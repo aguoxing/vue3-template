@@ -16,9 +16,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import ArticleList from '@/views/components/blog/ArticleList.vue'
-</script>
+<script lang="ts" setup></script>
 
 <style scoped>
 .left-container {

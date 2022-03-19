@@ -3,7 +3,7 @@
     <div class="m10">
       <div
         class="item-container"
-        v-for="(article, index) in 10"
+        v-for="(article, index) in articleList"
         :key="index"
         @click="goto(article)"
       >
@@ -43,26 +43,48 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { reactive, ref, toRefs } from 'vue'
+<script lang="ts">
+import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 
-const articleList = reactive([])
-const total = ref(100)
-const queryParams = reactive({
-  pageNum: 1,
-  pageSize: 10
+export default defineComponent({
+  setup() {
+    const articleList = reactive([])
+    const total = ref(100)
+    const queryParams = reactive({
+      pageNum: 1,
+      pageSize: 10
+    })
+    const refData = toRefs(queryParams)
+
+    const handleCurrentChange = (val: number) => {
+      queryParams.pageNum = val
+    }
+
+    const router = useRouter()
+    const goto = (val: string) => {
+      router.push('/blog/article/detail/' + val)
+    }
+
+    const getArticleList = () => {
+      const res = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      articleList.push(...res)
+    }
+
+    onMounted(() => {
+      getArticleList()
+    })
+
+    return {
+      articleList,
+      total,
+      queryParams,
+      ...refData,
+      handleCurrentChange,
+      goto
+    }
+  }
 })
-const refData = toRefs(queryParams)
-
-const handleCurrentChange = (val: number) => {
-  queryParams.pageNum = val
-}
-
-const router = useRouter()
-const goto = (val: string) => {
-  router.push('/blog/article/detail/' + val)
-}
 </script>
 
 <style scoped>
