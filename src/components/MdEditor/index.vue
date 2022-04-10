@@ -1,7 +1,7 @@
 <template>
   <div class="md-editor-preview">
     <md-editor editorId="my-editor" v-model="markdownContent" :previewOnly="true" />
-    <md-catalog editor-id="my-editor" :scrollElement="scrollElement" />
+    <md-catalog editorId="my-editor" :scrollElement="scrollElement" />
   </div>
 </template>
 

@@ -1,12 +1,15 @@
 <template>
   <div class="app-main">
-    <Header />
+    <BlogMenu />
     <RouterView class="container" />
     <Footer />
+    <ElBacktop :bottom="bottomHeight" />
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const bottomHeight = 85
+</script>
 
 <style lang="scss" scoped>
 .app-main {

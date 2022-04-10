@@ -4,7 +4,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 export default function createComponents() {
   return Components({
     // relative paths to the directory to search for components.
-    dirs: ['src/components', 'src/views/components'],
+    dirs: ['src/components', 'src/views/components', 'src/layout/components'],
 
     // valid file extensions for components.
     extensions: ['vue'],

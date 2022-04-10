@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const homeLayout = () => import('@/layout/index.vue')
-const blogLayout = () => import('@/layout/blog/index.vue')
+const blogLayout = () => import('@/layout/blog.vue')
 
 /**
  * https://router.vuejs.org/zh/guide/

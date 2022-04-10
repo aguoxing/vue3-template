@@ -1,7 +1,7 @@
 <template>
   <el-affix>
-    <div class="header-container shadow-md">
-      <div class="nav-container container">
+    <div class="header-container border-b">
+      <div class="nav-container">
         <div class="nav-logo">
           <img src="@/assets/logo.png" @click="goto('/home')" style="width: 30px; height: 30px" />
         </div>
@@ -17,7 +17,9 @@
         </div>
         <div class="nav-menu-mobile">
           <el-dropdown>
-            <div class="menu-btn">menu</div>
+            <div class="menu-btn">
+              <svg-icon icon-class="menu"></svg-icon>
+            </div>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item
@@ -59,8 +61,11 @@ const goto = (url: string) => {
   height: 50px;
   margin-bottom: 10px;
   font-size: 14px;
+  border-color: #e5e7eb;
 }
 .nav-container {
+  width: 85%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -86,8 +91,5 @@ const goto = (url: string) => {
 }
 .menu-item-bgc {
   color: #42b983;
-}
-.nav-menu-item-mobile {
-  background-color: skyblue;
 }
 </style>

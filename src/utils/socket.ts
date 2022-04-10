@@ -113,7 +113,7 @@ function reconnect() {
 }
 
 /**
- * 处理收到的数据
+ * 发送数据
  * @param data
  * @returns
  */

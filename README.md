@@ -17,6 +17,12 @@ vue-ts
 https://juejin.cn/post/6973288527802925092
 ```
 
+```shell
+npx prettier --write .
+
+ncu -u
+```
+
 ```json
 {
    // 指定需要编译文件 否则默认当前目录下除了exclude之外的所有.ts, .d.ts,.tsx 文件

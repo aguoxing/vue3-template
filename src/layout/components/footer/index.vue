@@ -1,7 +1,6 @@
 <template>
   <div class="footer-container">
-    <div class="horizontal-divider"></div>
-    <div class="footer-content">Copyright ©2020-2022 blog. All Rights Reserved.</div>
+    <div class="footer-content border-t">Copyright ©2020-2022 blog. All Rights Reserved.</div>
   </div>
 </template>
 
@@ -9,13 +8,12 @@
 
 <style lang="scss" scoped>
 .footer-container {
-  height: 100px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  height: 80px;
   color: #999999;
 }
 .footer-content {
+  margin-top: 10px;
+  font-size: 14px;
   display: flex;
   flex-direction: row;
   justify-content: center;

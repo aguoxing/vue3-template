@@ -15,7 +15,7 @@ body,
     sans-serif;
 }
 html {
-  background-color: #f9f9f9;
+  background-color: #fcfcfc;
   //background-color: #ffffff;
 }
 // main-container全局样式
@@ -36,25 +36,25 @@ html {
   /*滚动条高度*/
   background-color: white;
 }
-
 /*定义滑块 内阴影+圆角*/
 ::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 0 white;
   -webkit-box-shadow: inset 0 0 0 white;
-  background-color: rgb(193, 193, 193);
   /*滚动条的背景颜色*/
+  background-color: rgb(193, 193, 193);
   border-radius: 20px;
 }
+div::-webkit-scrollbar {
+  width: 0;
+}
 
-//解决表格固定列时的压样式问题
+//解决表格固定列时的压样式问题 element ui
 .el-table__fixed {
   height: calc(100% - 12px) !important; //这里的12px和上方的/*滚动条高度*/相同
 }
-
 .el-table__fixed-right {
   height: calc(100% - 12px) !important;
 }
-
 .el-table__fixed-right::before,
 .el-table__fixed::before {
   background-color: unset !important;
@@ -80,6 +80,7 @@ html {
     width: 95%;
     margin: 0 auto;
     background-color: #ffffff;
+    flex: 1 0 auto;
   }
 
   .nav-menu {
@@ -94,6 +95,7 @@ html {
     width: 95%;
     margin: 0 auto;
     background-color: #ffffff;
+    flex: 1 0 auto;
   }
 
   .nav-menu {
@@ -108,6 +110,7 @@ html {
     width: 90%;
     margin: 0 auto;
     background-color: #ffffff;
+    flex: 1 0 auto;
   }
 
   .nav-menu {
@@ -127,6 +130,7 @@ html {
     width: 60%;
     margin: 0 auto;
     background-color: #ffffff;
+    flex: 1 0 auto;
   }
 
   .nav-menu {
@@ -146,6 +150,7 @@ html {
     width: 50%;
     margin: 0 auto;
     background-color: #ffffff;
+    flex: 1 0 auto;
   }
 
   .nav-menu {
@@ -165,6 +170,7 @@ html {
     width: 50%;
     margin: 0 auto;
     background-color: #ffffff;
+    flex: 1 0 auto;
   }
 
   .nav-menu {
