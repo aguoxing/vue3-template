@@ -1,7 +1,7 @@
 <template>
   <div class="md-editor-preview">
-    <md-editor editorId="my-editor" v-model="markdownContent" :previewOnly="true" />
-    <md-catalog editorId="my-editor" :scrollElement="scrollElement" />
+    <MdEditor editorId="my-editor" v-model="markdownContent" :previewOnly="true" />
+    <MdCatalog editorId="my-editor" :scrollElement="scrollElement" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import 'md-editor-v3/lib/style.css'
 const MdCatalog = MdEditor.Catalog
 
 export default defineComponent({
-  name: 'VueTemplateDemo',
+  name: 'MyEditor',
   components: {
     MdEditor,
     MdCatalog

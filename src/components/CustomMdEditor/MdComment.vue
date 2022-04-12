@@ -8,7 +8,7 @@ import Editor from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
 
 export default defineComponent({
-  name: 'VueTemplateDemo',
+  name: 'MdComment',
   components: { Editor },
   data() {
     return {
