@@ -9,3 +9,15 @@ export const mainStore = defineStore('main', {
   getters: {},
   actions: {}
 })
+
+export const store = defineStore('store', {
+  state: () => {
+    return {
+      helloWorld: 'hello world'
+    }
+  },
+  getters: {},
+  actions: {}
+})
+
+export default store

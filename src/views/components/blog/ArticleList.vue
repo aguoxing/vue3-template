@@ -5,10 +5,10 @@
         class="item-container"
         v-for="(article, index) in articleList"
         :key="index"
-        @click="goto(article)"
+        @click="goto(article.id)"
       >
-        <div class="item-title">标题-{{ article }}</div>
-        <div class="item-summary">摘要-{{ article }}</div>
+        <div class="item-title" v-text="article.title"></div>
+        <div class="item-summary" v-text="article.summary"></div>
         <div class="item-tags">
           <el-tag size="small" class="item-tag" type="info">标签</el-tag>
           <el-tag size="small" class="item-tag" type="info">标签</el-tag>
@@ -21,9 +21,15 @@
           <el-tag size="small" class="item-tag" type="info">标签</el-tag>
         </div>
         <div class="item-footer">
-          <div class="footer-item"><svg-icon icon-class="author"></svg-icon>admin</div>
-          <div class="footer-item"><svg-icon icon-class="date01"></svg-icon>2022-02-21</div>
-          <div class="footer-item"><svg-icon icon-class="category"></svg-icon>测试</div>
+          <div class="footer-item">
+            <svg-icon icon-class="author"></svg-icon>{{ article.author }}
+          </div>
+          <div class="footer-item">
+            <svg-icon icon-class="date01"></svg-icon>{{ article.createTime }}
+          </div>
+          <div class="footer-item">
+            <svg-icon icon-class="category"></svg-icon>{{ article.category }}
+          </div>
         </div>
         <div class="horizontal-divider"></div>
       </div>
@@ -31,7 +37,6 @@
         <el-pagination
           :currentPage="queryParams.pageNum"
           :page-size="queryParams.pageSize"
-          :page-count="8"
           layout="pager"
           :background="true"
           :hide-on-single-page="true"
@@ -46,11 +51,12 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
+import { listArticle } from '@/api/blog/article'
 
 export default defineComponent({
   setup() {
-    const articleList = reactive([])
-    const total = ref(100)
+    const articleList = ref([])
+    const total = ref(0)
     const queryParams = reactive({
       pageNum: 1,
       pageSize: 10
@@ -67,8 +73,10 @@ export default defineComponent({
     }
 
     const getArticleList = () => {
-      const res = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-      articleList.push(...res)
+      listArticle(queryParams).then((res) => {
+        articleList.value = res.data.list
+        total.value = res.data.totalCount
+      })
     }
 
     onMounted(() => {

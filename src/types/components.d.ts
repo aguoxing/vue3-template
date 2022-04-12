@@ -2,11 +2,14 @@
 // We suggest you to commit this file into source control
 // Read more: https://github.com/vuejs/vue-next/pull/3399
 
-declare module 'vue' {
+declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ArticleComment: typeof import('./../views/components/blog/ArticleComment.vue')['default']
     ArticleList: typeof import('./../views/components/blog/ArticleList.vue')['default']
+    ArticleMarkdownPreview: typeof import('./../views/components/blog/ArticleMarkdownPreview.vue')['default']
+    BlogMenu: typeof import('./../layouts/components/header/BlogMenu.vue')['default']
     CommentItem: typeof import('./../views/components/blog/CommentItem.vue')['default']
+    CustomMdEditor: typeof import('./../components/CustomMdEditor/index.vue')['default']
     ElAffix: typeof import('element-plus/es')['ElAffix']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
@@ -22,10 +25,13 @@ declare module 'vue' {
     ElTag: typeof import('element-plus/es')['ElTag']
     ElTimeline: typeof import('element-plus/es')['ElTimeline']
     ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
-    MdComment: typeof import('./../components/MdEditor/MdComment.vue')['default']
-    MdEditor: typeof import('./../components/MdEditor/index.vue')['default']
+    Footer: typeof import('./../layouts/components/footer/index.vue')['default']
+    Header: typeof import('./../layouts/components/header/index.vue')['default']
+    MdComment: typeof import('./../components/CustomMdEditor/MdComment.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
   }
 }
 
-export { }
+export {}

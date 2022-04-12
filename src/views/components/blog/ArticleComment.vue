@@ -15,20 +15,16 @@
       </div>
     </div>
     <div class="horizontal-divider"></div>
-    <md-comment />
+    <MdComment />
     <div class="comment-btn">
       <el-button>Comment</el-button>
     </div>
     <div class="horizontal-divider"></div>
-    <comment-item />
+    <CommentItem />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({})
-</script>
+<script lang="ts"></script>
 
 <style scoped>
 .content-container {

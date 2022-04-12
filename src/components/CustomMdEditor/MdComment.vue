@@ -1,5 +1,13 @@
 <template>
-  <editor v-model="text" :toolbars="toolbar" :preview="false" style="height: 200px"></editor>
+  <div>
+    <editor
+      editorId="comment-editor"
+      v-model="text"
+      :toolbars="toolbar"
+      :preview="false"
+      style="height: 200px"
+    ></editor>
+  </div>
 </template>
 
 <script>

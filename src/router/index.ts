@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-const homeLayout = () => import('@/layout/index.vue')
-const blogLayout = () => import('@/layout/blog.vue')
+const homeLayout = () => import('@/layouts/index.vue')
+const blogLayout = () => import('@/layouts/blog.vue')
 
 /**
  * https://router.vuejs.org/zh/guide/
@@ -43,6 +43,12 @@ const routes: Array<RouteRecordRaw> = [
     name: '聊天',
     component: () => import('@/views/Chat.vue'),
     meta: { title: '聊天', icon: 'dashboard' }
+  },
+  {
+    path: '/demo',
+    name: 'demo',
+    component: () => import('@/views/Demo.vue'),
+    meta: { title: 'demo', icon: 'dashboard' }
   },
   {
     path: '/blog',
