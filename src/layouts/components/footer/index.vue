@@ -1,6 +1,6 @@
 <template>
-  <div class="footer-container">
-    <div class="footer-content border-t">Copyright ©2020-2022 blog. All Rights Reserved.</div>
+  <div class="footer-container border-t">
+    <div class="footer-content">Copyright ©2020-2022 blog. All Rights Reserved.</div>
   </div>
 </template>
 
@@ -12,7 +12,7 @@
   color: #999999;
 }
 .footer-content {
-  margin-top: 10px;
+  margin: 10px;
   font-size: 14px;
   display: flex;
   flex-direction: row;

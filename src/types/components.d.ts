@@ -11,20 +11,14 @@ declare module '@vue/runtime-core' {
     CommentItem: typeof import('./../views/components/blog/CommentItem.vue')['default']
     CustomMdEditor: typeof import('./../components/CustomMdEditor/index.vue')['default']
     ElAffix: typeof import('element-plus/es')['ElAffix']
-    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
-    ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
-    ElDivider: typeof import('element-plus/es')['ElDivider']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
-    ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElTag: typeof import('element-plus/es')['ElTag']
-    ElTimeline: typeof import('element-plus/es')['ElTimeline']
-    ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
     Footer: typeof import('./../layouts/components/footer/index.vue')['default']
     Header: typeof import('./../layouts/components/header/index.vue')['default']
     MdComment: typeof import('./../components/CustomMdEditor/MdComment.vue')['default']
@@ -34,4 +28,4 @@ declare module '@vue/runtime-core' {
   }
 }
 
-export {}
+export { }

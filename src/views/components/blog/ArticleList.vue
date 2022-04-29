@@ -51,7 +51,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
-import { listArticle } from '@/api/blog/article'
+import { listArticle } from '@/api/blog'
 
 export default defineComponent({
   setup() {

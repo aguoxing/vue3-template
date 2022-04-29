@@ -20,11 +20,27 @@
       <el-button>Comment</el-button>
     </div>
     <div class="horizontal-divider"></div>
-    <CommentItem />
+    <CommentItem :articleId="articleId" />
   </div>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+import { toRef, defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'ArticleComment',
+  props: {
+    articleId: String
+  },
+  setup(props) {
+    const articleId = toRef(props, 'articleId')
+
+    return {
+      articleId
+    }
+  }
+})
+</script>
 
 <style scoped>
 .content-container {

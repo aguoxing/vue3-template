@@ -6,7 +6,10 @@
       :previewOnly="true"
       :previewTheme="previewTheme"
     />
-    <MdCatalog editorId="blog-editor" :scrollElement="scrollElement" />
+    <!--    <MdCatalog
+      editorId="blog-editor"
+      :scrollElement="scrollElement"
+    />-->
   </div>
 </template>
 
@@ -40,14 +43,6 @@ export default defineComponent({
       scrollElement: document.scrollingElement
     }
   }
-
-  /*setup() {
-    const scrollElement = document.scrollingElement
-
-    return {
-      scrollElement
-    }
-  }*/
 })
 </script>
 <style lang="scss" scoped>

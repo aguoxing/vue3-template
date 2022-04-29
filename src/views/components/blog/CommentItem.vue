@@ -45,7 +45,6 @@
       <el-pagination
         :currentPage="queryParams.pageNum"
         :page-size="queryParams.pageSize"
-        :page-count="8"
         layout="pager"
         :background="true"
         :hide-on-single-page="true"
@@ -57,62 +56,38 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, toRefs } from 'vue'
+import { defineComponent, reactive, ref, toRefs, onMounted } from 'vue'
+import { listArticleComment } from '@/api/blog'
 
 export default defineComponent({
-  setup() {
-    const commentList = reactive([
-      {
-        createBy: 'admin',
-        userAvatar: 'circleUrl',
-        children: [
-          {
-            createBy: 'admin',
-            userAvatar: 'circleUrl',
-            children: [],
-            createTime: '2022-03-17',
-            contentText: 'asd'
-          },
-          {
-            createBy: 'admin',
-            userAvatar: 'circleUrl',
-            children: [],
-            createTime: '2022-03-17',
-            contentText: 'asd'
-          }
-        ],
-        createTime: '2022-03-17',
-        contentText: 'asd'
-      },
-      {
-        createBy: 'admin',
-        userAvatar: 'circleUrl',
-        children: [
-          {
-            createBy: 'admin',
-            userAvatar: 'circleUrl',
-            children: [],
-            createTime: '2022-03-17',
-            contentText: 'asd'
-          }
-        ],
-        createTime: '2022-03-17',
-        contentText: 'asd'
-      }
-    ])
-    const total = ref(100)
+  name: 'CommentItem',
+  props: {
+    articleId: String
+  },
+  setup(props) {
+    const commentList = ref([])
+    const total = ref(0)
     const queryParams = reactive({
       pageNum: 1,
       pageSize: 10
     })
     const refData = toRefs(queryParams)
 
-    const getCommentTree = () => {}
+    const getCommentTree = () => {
+      queryParams.articleId = props.articleId
+      listArticleComment(queryParams).then((res) => {
+        commentList.value = res.data.list
+        total.value = res.data.totalCount
+      })
+    }
 
     const handleCurrentChange = (val: number) => {
       queryParams.pageNum = val
-      console.log('asd')
     }
+
+    onMounted(() => {
+      getCommentTree()
+    })
 
     return {
       commentList,

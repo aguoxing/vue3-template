@@ -23,38 +23,26 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { listArticleTimeLine } from '@/api/blog'
 
-const timeLineList = reactive([
-  {
-    dateTimeStr: '2022',
-    totalCount: '3',
-    articleList: [
-      { createTime: '2022-01-01', title: 'hello world' },
-      { createTime: '2022-02-01', title: 'hello world 1' },
-      { createTime: '2022-03-01', title: 'hello world 2' }
-    ]
-  },
-  {
-    dateTimeStr: '2021',
-    totalCount: '2',
-    articleList: [
-      { createTime: '2021-01-01', title: 'hello world' },
-      { createTime: '2021-02-01', title: 'hello world 1' }
-    ]
-  },
-  {
-    dateTimeStr: '2020',
-    totalCount: '1',
-    articleList: [{ createTime: '2020-01-01', title: 'hello world' }]
-  }
-])
+const timeLineList = ref([])
+
+const getArticleTimeLine = () => {
+  listArticleTimeLine().then((res) => {
+    timeLineList.value = res.data
+  })
+}
 
 const router = useRouter()
 const goto = (val: string) => {
   router.push('/blog/article/detail/' + val)
 }
+
+onMounted(() => {
+  getArticleTimeLine()
+})
 </script>
 
 <style scoped>

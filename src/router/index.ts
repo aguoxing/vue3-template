@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 const homeLayout = () => import('@/layouts/index.vue')
 const blogLayout = () => import('@/layouts/blog.vue')
@@ -109,6 +111,19 @@ const routerHistory = createWebHistory()
 const router = createRouter({
   history: routerHistory,
   routes: routes
+})
+
+router.beforeEach((to, from, next) => {
+  // 路由发生变化修改页面title
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
 })
 
 export default router
