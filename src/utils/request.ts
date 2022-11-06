@@ -1,9 +1,9 @@
-import axios from 'axios'
+import axios, {AxiosRequestConfig, AxiosResponse} from 'axios'
 import { ElNotification, ElMessageBox, ElMessage, ElLoading } from 'element-plus'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
 import errorCode from '@/utils/errorCode'
-import { tansParams, blobValidate } from '@/utils/ruoyi'
+import { tansParams } from '@/utils/ruoyi'
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 // 创建axios实例
@@ -16,7 +16,7 @@ const service = axios.create({
 
 // request拦截器
 service.interceptors.request.use(
-  (config) => {
+  (config:AxiosRequestConfig) => {
     // 是否需要设置 token
     const isToken = (config.headers || {}).isToken === false
     if (getToken() && !isToken) {
@@ -39,7 +39,7 @@ service.interceptors.request.use(
 
 // 响应拦截器
 service.interceptors.response.use(
-  (res) => {
+  (res:AxiosResponse) => {
     // 未设置状态码则默认成功状态
     const code = res.data.code || 200
     // 获取错误信息

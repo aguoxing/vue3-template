@@ -1,129 +1,83 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-const homeLayout = () => import('@/layouts/index.vue')
-const blogLayout = () => import('@/layouts/blog.vue')
+import useStore from '@/store'
+
+const Layout = () => import('@/layout/index.vue')
 
 /**
  * https://router.vuejs.org/zh/guide/
  */
-const routes: Array<RouteRecordRaw> = [
+export const constantRoutes: Array<RouteRecordRaw> = [
   {
-    path: '',
-    name: '首页',
-    component: homeLayout,
-    redirect: '/home',
+    path: '/redirect',
+    component: Layout,
+    meta: { hidden: true },
     children: [
       {
-        path: '/home',
-        name: '首页',
-        component: () => import('@/views/Home.vue'),
-        meta: { title: '首页', icon: 'dashboard' }
-      },
-      {
-        path: '/blog',
-        name: '博客',
-        redirect: '/blog/article'
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect/index.vue')
       }
     ]
   },
   {
     path: '/login',
-    name: '登录',
-    component: () => import('@/views/Login.vue'),
-    meta: { title: '登录', icon: 'dashboard' }
+    component: () => import('@/views/login.vue'),
+    meta: { hidden: true }
   },
   {
     path: '/register',
-    name: '注册',
-    component: () => import('@/views/Register.vue'),
-    meta: { title: '注册', icon: 'dashboard' }
+    component: () => import('@/views/register.vue'),
+    meta: { hidden: true }
   },
   {
-    path: '/chat',
-    name: '聊天',
-    component: () => import('@/views/Chat.vue'),
-    meta: { title: '聊天', icon: 'dashboard' }
+    path: "/:pathMatch(.*)*",
+    component: () => import('@/views/error/404'),
+    meta: {hidden: true}
   },
   {
-    path: '/demo',
-    name: 'demo',
-    component: () => import('@/views/Demo.vue'),
-    meta: { title: 'demo', icon: 'dashboard' }
+    path: '/404',
+    component: () => import('@/views/error/404.vue'),
+    meta: { hidden: true }
   },
   {
-    path: '/blog',
-    component: blogLayout,
-    redirect: '/blog/article',
+    path: '401',
+    component: () => import('@/views/error/401.vue'),
+    meta: { hidden: true }
+  },
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/index',
     children: [
       {
-        path: '/blog/article',
-        name: '文章',
-        component: () => import('@/views/blog/article/index.vue'),
-        meta: { title: '文章', icon: 'dashboard' }
+        path: '/index',
+        component: () => import('@/views/index.vue'),
+        name: 'Index',
+        meta: { title: '首页', icon: 'homepage', affix: true }
       },
-      {
-        path: '/blog/category',
-        name: '分类',
-        component: () => import('@/views/blog/category/index.vue'),
-        meta: { title: '分类', icon: 'dashboard' }
-      },
-      {
-        path: '/blog/tags',
-        name: '标签',
-        component: () => import('@/views/blog/tags/index.vue'),
-        meta: { title: '标签', icon: 'dashboard' }
-      },
-      {
-        path: '/blog/timeline',
-        name: '归档',
-        component: () => import('@/views/blog/timeline/index.vue'),
-        meta: { title: '归档', icon: 'dashboard' }
-      },
-      {
-        path: '/blog/about',
-        name: '关于',
-        component: () => import('@/views/blog/about/index.vue'),
-        meta: { title: '关于', icon: 'dashboard' }
-      }
-    ]
-  },
-  {
-    path: '/blog/article',
-    component: blogLayout,
-    children: [
-      {
-        path: 'detail/:id',
-        component: () => import('@/views/blog/article/detail.vue'),
-        name: 'detail',
-        meta: { title: '详情', activeMenu: '/blog/article' }
-      }
     ]
   }
 ]
 
-const routerHistory = createWebHistory()
 // createWebHashHistory hash 路由
 // createWebHistory history 路由
 // createMemoryHistory 带缓存 history 路由
-
 const router = createRouter({
-  history: routerHistory,
-  routes: routes
+  history: createWebHistory(),
+  routes: constantRoutes,
+  // 刷新时，滚动条位置还原
+  scrollBehavior: () => ({ left: 0, top: 0 })
 })
 
-router.beforeEach((to, from, next) => {
-  // 路由发生变化修改页面title
-  if (to.meta.title) {
-    document.title = to.meta.title
-  }
-  NProgress.start()
-  next()
-})
-
-router.afterEach(() => {
-  NProgress.done()
-})
+// 重置路由
+export function resetRouter() {
+  const { permission } = useStore()
+  permission.routes.forEach((route) => {
+    const name = route.name
+    if (name && router.hasRoute(name)) {
+      router.removeRoute(name)
+    }
+  })
+}
 
 export default router

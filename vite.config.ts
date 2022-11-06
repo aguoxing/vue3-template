@@ -19,16 +19,16 @@ export default defineConfig(({ mode, command }) => {
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     },
     server: {
-      port: 3000, // 设置服务启动端口号
-      open: true // 设置服务启动时是否自动打开浏览器
+      port: Number(env.VITE_APP_PORT), // 设置服务启动端口号
+      open: true, // 设置服务启动时是否自动打开浏览器
       // 代理
-      /* proxy: {
-        '/dev-api': {
-          target: 'http://localhost:8088',
+      proxy: {
+        [env.VITE_APP_BASE_API]: {
+          target: 'http://localhost:8081',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/dev-api/, '')
+          rewrite: (path) => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), '')
         }
-      } */
+      }
     }
   }
 })

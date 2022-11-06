@@ -1,23 +1,15 @@
-import { defineStore } from 'pinia'
+import useUserStore from './modules/user'
+import useAppStore from './modules/app'
+import usePermissionStore from './modules/permission'
+import useSettingStore from './modules/settings'
+import useTagsViewStore from './modules/tagsView'
 
-export const mainStore = defineStore('main', {
-  state: () => {
-    return {
-      helloWorld: 'hello world'
-    }
-  },
-  getters: {},
-  actions: {}
+const useStore = () => ({
+  user: useUserStore(),
+  app: useAppStore(),
+  permission: usePermissionStore(),
+  setting: useSettingStore(),
+  tagsView: useTagsViewStore()
 })
 
-export const store = defineStore('store', {
-  state: () => {
-    return {
-      helloWorld: 'hello world'
-    }
-  },
-  getters: {},
-  actions: {}
-})
-
-export default store
+export default useStore
