@@ -10,15 +10,13 @@
         <div class="item-title" v-text="article.title"></div>
         <div class="item-summary" v-text="article.summary"></div>
         <div class="item-tags">
-          <el-tag size="small" class="item-tag" type="info">标签</el-tag>
-          <el-tag size="small" class="item-tag" type="info">标签</el-tag>
-          <el-tag size="small" class="item-tag" type="info">标签</el-tag>
-          <el-tag size="small" class="item-tag" type="info">标签</el-tag>
-          <el-tag size="small" class="item-tag" type="info">标签</el-tag>
-          <el-tag size="small" class="item-tag" type="info">标签</el-tag>
-          <el-tag size="small" class="item-tag" type="info">标签</el-tag>
-          <el-tag size="small" class="item-tag" type="info">标签</el-tag>
-          <el-tag size="small" class="item-tag" type="info">标签</el-tag>
+          <el-tag
+            v-for="(tag, idx) in article.tags"
+            :key="idx"
+            size="small"
+            class="item-tag"
+            type="info"
+          >{{tag}}</el-tag>
         </div>
         <div class="item-footer">
           <div class="footer-item">
@@ -28,14 +26,14 @@
             <svg-icon icon-class="date01"></svg-icon>{{ article.createTime }}
           </div>
           <div class="footer-item">
-            <svg-icon icon-class="category"></svg-icon>{{ article.category }}
+            <svg-icon icon-class="category"></svg-icon>{{ article.categoryName }}
           </div>
         </div>
         <div class="horizontal-divider"></div>
       </div>
       <div class="pagination-container">
         <el-pagination
-          :currentPage="queryParams.pageNum"
+          :current-page="queryParams.pageNum"
           :page-size="queryParams.pageSize"
           layout="pager"
           :background="true"
@@ -74,8 +72,8 @@ export default defineComponent({
 
     const getArticleList = () => {
       listArticle(queryParams).then((res) => {
-        articleList.value = res.data.list
-        total.value = res.data.totalCount
+        articleList.value = res.rows
+        total.value = res.total
       })
     }
 
