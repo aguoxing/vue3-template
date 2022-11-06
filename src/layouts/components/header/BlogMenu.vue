@@ -3,7 +3,7 @@
     <div class="header-container border-b">
       <div class="nav-container">
         <div class="nav-logo">
-          <img src="@/assets/logo.png" @click="goto('/home')" style="width: 30px; height: 30px" />
+          <img src="@/assets/vue.svg" @click="goto('/home')" style="width: 30px; height: 30px" />
         </div>
         <div class="nav-menu">
           <div
@@ -26,7 +26,8 @@
                   v-for="(menu, index) in navMenus"
                   :key="index"
                   @click="goto(menu.path)"
-                  >{{ menu.name }}</el-dropdown-item>
+                  >{{ menu.name }}</el-dropdown-item
+                >
               </el-dropdown-menu>
             </template>
           </el-dropdown>

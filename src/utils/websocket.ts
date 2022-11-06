@@ -1,7 +1,7 @@
 // websocket实例
 let wsObj: any
 // ws连接地址
-let wsUrl = null
+let wsUrl: null = null
 // let userId = null;
 // 是否执行重连 true/不执行 ； false/执行
 let lockReconnect = false

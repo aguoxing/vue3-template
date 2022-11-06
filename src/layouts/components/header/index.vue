@@ -3,7 +3,7 @@
     <div class="header-container border-b">
       <div class="nav-container">
         <div class="nav-logo">
-          <img src="@/assets/logo.png" @click="goto('/home')" style="width: 30px; height: 30px" />
+          <img src="@/assets/vue.svg" @click="goto('/home')" style="width: 30px; height: 30px" />
         </div>
         <div class="nav-menu">
           <div

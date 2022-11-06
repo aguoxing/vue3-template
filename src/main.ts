@@ -5,12 +5,12 @@ import router from './router/index'
 
 import './assets/styles/global.scss'
 // svg图标
-import 'virtual:svg-icons-register'
+// import 'virtual:svg-icons-register'
 // import SvgIcon from '@/components/SvgIcon/index.vue'
 // import elementIcons from '@/components/SvgIcon/svgicons.ts'
 
 // windicss
-import 'virtual:windi.css'
+// import 'virtual:windi.css'
 
 // markdown editor
 // import mdeditor from '@/components/mdeditor/index.vue'

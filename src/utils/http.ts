@@ -28,7 +28,7 @@ instance.interceptors.request.use(
   }
 )
 
-const errorHandle = (status, other) => {
+const errorHandle = (status: number, other: string) => {
   switch (status) {
     case 400:
       Message.error('信息校验失败')

@@ -16,7 +16,8 @@
             size="small"
             class="item-tag"
             type="info"
-          >{{tag}}</el-tag>
+            >{{ tag }}</el-tag
+          >
         </div>
         <div class="item-footer">
           <div class="footer-item">

@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import createVitePlugins from './src/plugins/vite'
 import { resolve } from 'path' // 编辑器提示 path 模块找不到，可以yarn add @types/node --dev
 
+// https://vitejs.dev/config/
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd())
   return {
@@ -19,15 +20,15 @@ export default defineConfig(({ mode, command }) => {
     },
     server: {
       port: 3000, // 设置服务启动端口号
-      open: true, // 设置服务启动时是否自动打开浏览器
+      open: true // 设置服务启动时是否自动打开浏览器
       // 代理
-      proxy: {
+      /* proxy: {
         '/dev-api': {
           target: 'http://localhost:8088',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/dev-api/, '')
         }
-      }
+      } */
     }
   }
 })
