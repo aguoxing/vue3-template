@@ -1,19 +1,19 @@
- /**
- * v-hasPermi 操作权限处理
+/**
+ * v-hasPerms 操作权限处理
  */
-import useUserStore from '@/store/modules/user'
+import useStore from '@/store'
 
 export default {
-  mounted(el, binding, vnode) {
+  mounted(el: HTMLElement, binding: any, vnode: any) {
     const { value } = binding
-    const all_permission = "*:*:*";
-    const permissions = useUserStore().permissions
+    const all_permission = '*:*:*'
+    const perms = useStore().user.perms
 
     if (value && value instanceof Array && value.length > 0) {
       const permissionFlag = value
 
-      const hasPermissions = permissions.some(permission => {
-        return all_permission === permission || permissionFlag.includes(permission)
+      const hasPermissions = perms.some((p) => {
+        return all_permission === p || permissionFlag.includes(p)
       })
 
       if (!hasPermissions) {

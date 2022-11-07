@@ -1,21 +1,29 @@
 <template>
   <div class="top-right-btn" :style="style">
     <el-row>
-      <el-tooltip
-        class="item"
-        effect="dark"
-        :content="showSearch ? '隐藏搜索' : '显示搜索'"
-        placement="top"
-        v-if="search"
-      >
-        <el-button circle icon="Search" @click="toggleSearch()" />
-      </el-tooltip>
-      <el-tooltip class="item" effect="dark" content="刷新" placement="top">
-        <el-button circle icon="Refresh" @click="refresh()" />
-      </el-tooltip>
-      <el-tooltip class="item" effect="dark" content="显隐列" placement="top" v-if="columns">
-        <el-button circle icon="Menu" @click="showColumn()" />
-      </el-tooltip>
+      <el-button-group>
+        <el-tooltip
+          class="item"
+          effect="dark"
+          :content="showSearch ? '隐藏搜索' : '显示搜索'"
+          placement="top"
+          v-if="search"
+        >
+          <el-button @click="toggleSearch()">
+            <ep:search />
+          </el-button>
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="刷新" placement="top">
+          <el-button @click="refresh()">
+            <ep:refresh />
+          </el-button>
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="显隐列" placement="top" v-if="columns">
+          <el-button @click="showColumn()">
+            <ep:menu />
+          </el-button>
+        </el-tooltip>
+      </el-button-group>
     </el-row>
     <el-dialog :title="title" v-model="open" append-to-body>
       <el-transfer
@@ -28,7 +36,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 const props = defineProps({
   showSearch: {
     type: Boolean,

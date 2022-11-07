@@ -1,153 +1,135 @@
 import request from '@/utils/request'
-import { AxiosPromise } from 'axios'
-import { UserFormData, UserInfo, UserPageResult, UserQueryParam } from '@/types/api/user'
+import { parseStrEmpty } from "@/utils/ruoyi";
 
-/**
- * 登录成功后获取用户信息（昵称、头像、权限集合和角色集合）
- */
-export function getUserInfo(): AxiosPromise<UserInfo> {
+// 查询用户列表
+export function listUser(query) {
   return request({
-    url: '/api/v1/users/me',
-    method: 'get'
-  })
-}
-
-/**
- * 获取用户分页列表
- *
- * @param queryParams
- */
-export function listUserPages(queryParams: UserQueryParam): AxiosPromise<UserPageResult> {
-  return request({
-    url: '/api/v1/users/pages',
+    url: '/system/user/list',
     method: 'get',
-    params: queryParams
+    params: query
   })
 }
 
-/**
- * 获取用户表单详情
- *
- * @param userId
- */
-export function getUserFormData(userId: number): AxiosPromise<UserFormData> {
+// 查询用户详细
+export function getUser(userId) {
   return request({
-    url: '/api/v1/users/' + userId + '/form',
+    url: '/system/user/' + parseStrEmpty(userId),
     method: 'get'
   })
 }
 
-/**
- * 添加用户
- *
- * @param data
- */
-export function addUser(data: any) {
+// 新增用户
+export function addUser(data) {
   return request({
-    url: '/api/v1/users',
+    url: '/system/user',
     method: 'post',
     data: data
   })
 }
 
-/**
- * 修改用户
- *
- * @param id
- * @param data
- */
-export function updateUser(id: number, data: UserFormData) {
+// 修改用户
+export function updateUser(data) {
   return request({
-    url: '/api/v1/users/' + id,
+    url: '/system/user',
     method: 'put',
     data: data
   })
 }
 
-/**
- * 修改用户状态
- *
- * @param id
- * @param status
- */
-export function updateUserStatus(id: number, status: number) {
+// 删除用户
+export function delUser(userId) {
   return request({
-    url: '/api/v1/users/' + id + '/status',
-    method: 'patch',
-    params: { status: status }
-  })
-}
-
-/**
- * 修改用户密码
- *
- * @param id
- * @param password
- */
-export function updateUserPassword(id: number, password: string) {
-  return request({
-    url: '/api/v1/users/' + id + '/password',
-    method: 'patch',
-    params: { password: password }
-  })
-}
-
-/**
- * 删除用户
- *
- * @param ids
- */
-export function deleteUsers(ids: string) {
-  return request({
-    url: '/api/v1/users/' + ids,
+    url: '/system/user/' + userId,
     method: 'delete'
   })
 }
 
-/**
- * 下载用户导入模板
- *
- * @returns
- */
-export function downloadTemplate() {
+// 用户密码重置
+export function resetUserPwd(userId, password) {
+  const data = {
+    userId,
+    password
+  }
   return request({
-    url: '/api/v1/users/template',
-    method: 'get',
-    responseType: 'arraybuffer'
+    url: '/system/user/resetPwd',
+    method: 'put',
+    data: data
   })
 }
 
-/**
- * 导出用户
- *
- * @param queryParams
- * @returns
- */
-export function exportUser(queryParams: UserQueryParam) {
+// 用户状态修改
+export function changeUserStatus(userId, status) {
+  const data = {
+    userId,
+    status
+  }
   return request({
-    url: '/api/v1/users/_export',
-    method: 'get',
-    params: queryParams,
-    responseType: 'arraybuffer'
+    url: '/system/user/changeStatus',
+    method: 'put',
+    data: data
   })
 }
 
-/**
- * 导入用户
- *
- * @param file
- */
-export function importUser(deptId: number, roleIds: string, file: File) {
-  const formData = new FormData()
-  formData.append('file', file)
-  formData.append('deptId', deptId.toString())
-  formData.append('roleIds', roleIds)
+// 查询用户个人信息
+export function getUserProfile() {
   return request({
-    url: '/api/v1/users/_import',
+    url: '/system/user/profile',
+    method: 'get'
+  })
+}
+
+// 修改用户个人信息
+export function updateUserProfile(data) {
+  return request({
+    url: '/system/user/profile',
+    method: 'put',
+    data: data
+  })
+}
+
+// 用户密码重置
+export function updateUserPwd(oldPassword, newPassword) {
+  const data = {
+    oldPassword,
+    newPassword
+  }
+  return request({
+    url: '/system/user/profile/updatePwd',
+    method: 'put',
+    params: data
+  })
+}
+
+// 用户头像上传
+export function uploadAvatar(data) {
+  return request({
+    url: '/system/user/profile/avatar',
     method: 'post',
-    data: formData,
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
+    data: data
+  })
+}
+
+// 查询授权角色
+export function getAuthRole(userId) {
+  return request({
+    url: '/system/user/authRole/' + userId,
+    method: 'get'
+  })
+}
+
+// 保存授权角色
+export function updateAuthRole(data) {
+  return request({
+    url: '/system/user/authRole',
+    method: 'put',
+    params: data
+  })
+}
+
+// 查询部门下拉树结构
+export function deptTreeSelect() {
+  return request({
+    url: '/system/user/deptTree',
+    method: 'get'
   })
 }

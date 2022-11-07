@@ -1,97 +1,60 @@
-import { MenuFormData, MenuItem, MenuQueryParam, Resource } from '@/types/api/menu'
-import { Option } from '@/types/common'
 import request from '@/utils/request'
-import { AxiosPromise } from 'axios'
 
-/**
- * 获取路由列表
- */
-export function listRoutes() {
+// 查询菜单列表
+export function listMenu(query) {
   return request({
-    url: '/api/v1/menus/routes',
-    method: 'get'
-  })
-}
-
-/**
- * 获取菜单表格列表
- *
- * @param queryParams
- */
-export function listMenus(queryParams: MenuQueryParam): AxiosPromise<MenuItem[]> {
-  return request({
-    url: '/api/v1/menus',
+    url: '/system/menu/list',
     method: 'get',
-    params: queryParams
+    params: query
   })
 }
 
-/**
- * 获取菜单下拉树形列表
- */
-export function listMenuOptions(): AxiosPromise<Option[]> {
+// 查询菜单详细
+export function getMenu(menuId) {
   return request({
-    url: '/api/v1/menus/options',
+    url: '/system/menu/' + menuId,
     method: 'get'
   })
 }
 
-/**
- * 获取资源(菜单+权限)树形列表
- */
-export function listResources(): AxiosPromise<Resource[]> {
+// 查询菜单下拉树结构
+export function treeselect() {
   return request({
-    url: '/api/v1/menus/resources',
+    url: '/system/menu/treeselect',
     method: 'get'
   })
 }
 
-/**
- * 获取菜单详情
- * @param id
- */
-export function getMenuDetail(id: string): AxiosPromise<MenuFormData> {
+// 根据角色ID查询菜单下拉树结构
+export function roleMenuTreeselect(roleId) {
   return request({
-    url: '/api/v1/menus/' + id,
+    url: '/system/menu/roleMenuTreeselect/' + roleId,
     method: 'get'
   })
 }
 
-/**
- * 添加菜单
- *
- * @param data
- */
-export function addMenu(data: MenuFormData) {
+// 新增菜单
+export function addMenu(data) {
   return request({
-    url: '/api/v1/menus',
+    url: '/system/menu',
     method: 'post',
     data: data
   })
 }
 
-/**
- * 修改菜单
- *
- * @param id
- * @param data
- */
-export function updateMenu(id: string, data: MenuFormData) {
+// 修改菜单
+export function updateMenu(data) {
   return request({
-    url: '/api/v1/menus/' + id,
+    url: '/system/menu',
     method: 'put',
     data: data
   })
 }
 
-/**
- * 批量删除菜单
- *
- * @param ids 菜单ID，多个以英文逗号(,)分割
- */
-export function deleteMenus(ids: string) {
+// 删除菜单
+export function delMenu(menuId) {
   return request({
-    url: '/api/v1/menus/' + ids,
+    url: '/system/menu/' + menuId,
     method: 'delete'
   })
 }

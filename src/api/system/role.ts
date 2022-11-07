@@ -1,107 +1,119 @@
-import { RoleFormData, RolePageResult, RoleQueryParam, RoleResource } from '@/types/api/role'
-
-import { Option } from '@/types/common'
 import request from '@/utils/request'
-import { AxiosPromise } from 'axios'
 
-/**
- * 获取角色分页数据
- *
- * @param queryParams
- */
-export function listRolePages(queryParams?: RoleQueryParam): AxiosPromise<RolePageResult> {
+// 查询角色列表
+export function listRole(query) {
   return request({
-    url: '/api/v1/roles/pages',
+    url: '/system/role/list',
     method: 'get',
-    params: queryParams
+    params: query
   })
 }
 
-/**
- * 获取角色下拉数据
- *
- * @param queryParams
- */
-export function listRoleOptions(queryParams?: RoleQueryParam): AxiosPromise<Option[]> {
+// 查询角色详细
+export function getRole(roleId) {
   return request({
-    url: '/api/v1/roles/options',
-    method: 'get',
-    params: queryParams
-  })
-}
-
-/**
- * 获取角色拥有的资源ID集合
- *
- * @param queryParams
- */
-export function getRoleMenuIds(roleId: string): AxiosPromise<number[]> {
-  return request({
-    url: '/api/v1/roles/' + roleId + '/menuIds',
+    url: '/system/role/' + roleId,
     method: 'get'
   })
 }
 
-/**
- * 修改角色资源权限
- *
- * @param queryParams
- */
-export function updateRoleMenus(roleId: string, data: number[]): AxiosPromise<any> {
+// 新增角色
+export function addRole(data) {
   return request({
-    url: '/api/v1/roles/' + roleId + '/menus',
-    method: 'put',
-    data: data
-  })
-}
-
-/**
- * 获取角色详情
- *
- * @param id
- */
-export function getRoleFormDetail(id: number): AxiosPromise<RoleFormData> {
-  return request({
-    url: '/api/v1/roles/' + id,
-    method: 'get'
-  })
-}
-
-/**
- * 添加角色
- *
- * @param data
- */
-export function addRole(data: RoleFormData) {
-  return request({
-    url: '/api/v1/roles',
+    url: '/system/role',
     method: 'post',
     data: data
   })
 }
 
-/**
- * 更新角色
- *
- * @param id
- * @param data
- */
-export function updateRole(id: number, data: RoleFormData) {
+// 修改角色
+export function updateRole(data) {
   return request({
-    url: '/api/v1/roles/' + id,
+    url: '/system/role',
     method: 'put',
     data: data
   })
 }
 
-/**
- * 批量删除角色，多个以英文逗号(,)分割
- *
- * @param ids
- */
-export function deleteRoles(ids: string) {
+// 角色数据权限
+export function dataScope(data) {
   return request({
-    url: '/api/v1/roles/' + ids,
+    url: '/system/role/dataScope',
+    method: 'put',
+    data: data
+  })
+}
+
+// 角色状态修改
+export function changeRoleStatus(roleId, status) {
+  const data = {
+    roleId,
+    status
+  }
+  return request({
+    url: '/system/role/changeStatus',
+    method: 'put',
+    data: data
+  })
+}
+
+// 删除角色
+export function delRole(roleId) {
+  return request({
+    url: '/system/role/' + roleId,
     method: 'delete'
+  })
+}
+
+// 查询角色已授权用户列表
+export function allocatedUserList(query) {
+  return request({
+    url: '/system/role/authUser/allocatedList',
+    method: 'get',
+    params: query
+  })
+}
+
+// 查询角色未授权用户列表
+export function unallocatedUserList(query) {
+  return request({
+    url: '/system/role/authUser/unallocatedList',
+    method: 'get',
+    params: query
+  })
+}
+
+// 取消用户授权角色
+export function authUserCancel(data) {
+  return request({
+    url: '/system/role/authUser/cancel',
+    method: 'put',
+    data: data
+  })
+}
+
+// 批量取消用户授权角色
+export function authUserCancelAll(data) {
+  return request({
+    url: '/system/role/authUser/cancelAll',
+    method: 'put',
+    params: data
+  })
+}
+
+// 授权用户选择
+export function authUserSelectAll(data) {
+  return request({
+    url: '/system/role/authUser/selectAll',
+    method: 'put',
+    params: data
+  })
+}
+
+// 根据角色ID查询部门树结构
+export function deptTreeSelect(roleId) {
+  return request({
+    url: '/system/role/deptTree/' + roleId,
+    method: 'get'
   })
 }

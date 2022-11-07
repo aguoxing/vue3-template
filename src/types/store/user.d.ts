@@ -1,6 +1,6 @@
 export interface UserState {
   token: string
-  nickname: string
+  name: string
   avatar: string
   roles: string[]
   perms: string[]

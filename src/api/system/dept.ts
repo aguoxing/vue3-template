@@ -1,78 +1,52 @@
-import { DeptFormData, DeptItem, DeptQueryParam } from '@/types/api/dept'
-import { Option } from '@/types/common'
 import request from '@/utils/request'
-import { AxiosPromise } from 'axios'
 
-/**
- * 部门树形表格
- *
- * @param queryParams
- */
-export function listDepartments(queryParams?: DeptQueryParam): AxiosPromise<DeptItem[]> {
+// 查询部门列表
+export function listDept(query) {
   return request({
-    url: '/api/v1/dept',
+    url: '/system/dept/list',
     method: 'get',
-    params: queryParams
+    params: query
   })
 }
 
-/**
- * 部门下拉列表
- */
-export function listDeptOptions(): AxiosPromise<Option[]> {
+// 查询部门列表（排除节点）
+export function listDeptExcludeChild(deptId) {
   return request({
-    url: '/api/v1/dept/options',
+    url: '/system/dept/list/exclude/' + deptId,
     method: 'get'
   })
 }
 
-/**
- * 获取部门详情
- *
- * @param id
- */
-export function getDeptForm(id: string): AxiosPromise<DeptFormData> {
+// 查询部门详细
+export function getDept(deptId) {
   return request({
-    url: '/api/v1/dept/' + id + '/form',
+    url: '/system/dept/' + deptId,
     method: 'get'
   })
 }
 
-/**
- * 新增部门
- *
- * @param data
- */
-export function addDept(data: DeptFormData) {
+// 新增部门
+export function addDept(data) {
   return request({
-    url: '/api/v1/dept',
+    url: '/system/dept',
     method: 'post',
     data: data
   })
 }
 
-/**
- *  修改部门
- *
- * @param id
- * @param data
- */
-export function updateDept(id: string, data: DeptFormData) {
+// 修改部门
+export function updateDept(data) {
   return request({
-    url: '/api/v1/dept/' + id,
+    url: '/system/dept',
     method: 'put',
     data: data
   })
 }
 
-/**
- * 删除部门
- *
- * @param ids
- */
-export function deleteDept(ids: string) {
+// 删除部门
+export function delDept(deptId) {
   return request({
-    url: '/api/v1/dept/' + ids,
+    url: '/system/dept/' + deptId,
     method: 'delete'
   })
 }
