@@ -15,18 +15,16 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 defineProps({
   isActive: {
-    required: true,
     type: Boolean,
     default: false
   }
 })
 
-const emit = defineEmits(['toggleClick'])
-
-function toggleClick() {
+const emit = defineEmits()
+const toggleClick = () => {
   emit('toggleClick')
 }
 </script>

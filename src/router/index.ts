@@ -1,12 +1,13 @@
-import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 import useStore from '@/store'
 
-const Layout = () => import('@/layout/index.vue')
+export const Layout = () => import('@/layout/index.vue')
 
 /**
  * https://router.vuejs.org/zh/guide/
  */
+// 公共路由
 export const constantRoutes: Array<RouteRecordRaw> = [
   {
     path: '/redirect',
@@ -30,9 +31,9 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     meta: { hidden: true }
   },
   {
-    path: "/:pathMatch(.*)*",
-    component: () => import('@/views/error/404'),
-    meta: {hidden: true}
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/error/404.vue'),
+    meta: { hidden: true }
   },
   {
     path: '/404',
@@ -40,12 +41,12 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     meta: { hidden: true }
   },
   {
-    path: '401',
+    path: '/401',
     component: () => import('@/views/error/401.vue'),
     meta: { hidden: true }
   },
   {
-    path: '/',
+    path: '',
     component: Layout,
     redirect: '/index',
     children: [
@@ -53,11 +54,14 @@ export const constantRoutes: Array<RouteRecordRaw> = [
         path: '/index',
         component: () => import('@/views/index.vue'),
         name: 'Index',
-        meta: { title: '首页', icon: 'homepage', affix: true }
-      },
+        meta: { title: '首页', icon: 'dashboard', affix: true }
+      }
     ]
   }
 ]
+
+// 动态路由，基于用户权限动态去加载
+export const dynamicRoutes = []
 
 // createWebHashHistory hash 路由
 // createWebHistory history 路由

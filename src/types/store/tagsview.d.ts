@@ -9,5 +9,6 @@ export interface TagView extends Partial<RouteLocationNormalized> {
 
 export interface TagsViewState {
   visitedViews: TagView[]
+  iframeViews: TagView[]
   cachedViews: string[]
 }

@@ -1,9 +1,9 @@
 import vue from '@vitejs/plugin-vue'
 import createSvgIcon from './svg-icon'
+import Icons from 'unplugin-icons/vite'
 import createCompression from './compression'
 import createAutoImport from './auto-import'
 import createComponents from './components'
-// import WindiCSS from 'vite-plugin-windicss'
 import createMockServer from './mock'
 
 export default function createVitePlugins(viteEnv: any, isBuild = false) {
@@ -11,8 +11,8 @@ export default function createVitePlugins(viteEnv: any, isBuild = false) {
   vitePlugins.push(createSvgIcon(isBuild))
   vitePlugins.push(createAutoImport())
   vitePlugins.push(createComponents())
+  vitePlugins.push(Icons({autoInstall: true}))
   vitePlugins.push(createMockServer())
-  // vitePlugins.push(WindiCSS())
   isBuild && vitePlugins.push(...createCompression(viteEnv))
   return vitePlugins
 }

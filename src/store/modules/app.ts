@@ -1,7 +1,6 @@
 import { AppState } from '@/types/store/app'
-import { localStorage } from '@/utils/storage'
-import { defineStore } from 'pinia'
 import { getLanguage } from '@/lang/index'
+import { localStorage } from '@/utils/storage'
 
 const useAppStore = defineStore({
   id: 'app',
@@ -9,7 +8,8 @@ const useAppStore = defineStore({
     device: 'desktop',
     sidebar: {
       opened: localStorage.get('sidebarStatus') ? !!+localStorage.get('sidebarStatus') : true,
-      withoutAnimation: false
+      withoutAnimation: false,
+      hide: false
     },
     language: getLanguage(),
     size: localStorage.get('size') || 'default'
@@ -35,6 +35,9 @@ const useAppStore = defineStore({
     setSize(size: string) {
       this.size = size
       localStorage.set('size', size)
+    },
+    toggleSideBarHide(status: boolean) {
+      this.sidebar.hide = status
     },
     setLanguage(language: string) {
       this.language = language

@@ -54,7 +54,7 @@ export function getCodeImg() {
 }
 
 // 获取路由
-export function listRouters() {
+export function getRouters() {
   return request({
     url: '/getRouters',
     method: 'get'

@@ -1,60 +1,62 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
+  <div :class="classObj" class="app-wrapper" :style="{ '--current-color': theme }">
     <div
-      v-if="device === 'mobile' && sidebar.opened"
+      v-if="device === 'mobile' && sidebarObj.opened"
       class="drawer-bg"
       @click="handleClickOutside"
     />
-    <Sidebar class="sidebar-container" />
-    <div :class="{ hasTagsView: needTagsView }" class="main-container">
+    <sidebar v-if="!sidebarObj.hide" class="sidebar-container" />
+    <div :class="{ hasTagsView: needTagsView, sidebarHide: sidebarObj.hide }" class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
-        <navbar />
+        <navbar @setLayout="setLayout" />
         <tags-view v-if="needTagsView" />
       </div>
-
-      <!--主页面-->
       <app-main />
+      <settings ref="settingRef" />
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import { computed, watchEffect } from 'vue'
-import { useWindowSize } from '@vueuse/core'
-import { AppMain, Navbar, Settings, TagsView } from './components/index'
-import Sidebar from './components/Sidebar/index.vue'
-
+<script lang="ts" setup>
 import useStore from '@/store'
+const {app,setting} = useStore()
 
-const { width } = useWindowSize()
-const WIDTH = 992
-
-const { app, setting } = useStore()
-
-const sidebar = computed(() => app.sidebar)
+const theme = computed(() => setting.theme)
+const sideTheme = computed(() => setting.sideTheme)
+const sidebarObj = computed(() => app.sidebar)
 const device = computed(() => app.device)
 const needTagsView = computed(() => setting.tagsView)
 const fixedHeader = computed(() => setting.fixedHeader)
-const showSettings = computed(() => setting.showSettings)
 
 const classObj = computed(() => ({
-  hideSidebar: !sidebar.value.opened,
-  openSidebar: sidebar.value.opened,
-  withoutAnimation: sidebar.value.withoutAnimation,
+  hideSidebar: !sidebarObj.value.opened,
+  openSidebar: sidebarObj.value.opened,
+  withoutAnimation: sidebarObj.value.withoutAnimation,
   mobile: device.value === 'mobile'
 }))
 
+const { width, height } = useWindowSize()
+const WIDTH = 992 // refer to Bootstrap's responsive design
+
 watchEffect(() => {
-  if (width.value < WIDTH) {
+  if (device.value === 'mobile' && sidebarObj.value.opened) {
+    app.closeSideBar({ withoutAnimation: false })
+  }
+  if (width.value - 1 < WIDTH) {
     app.toggleDevice('mobile')
-    app.closeSideBar(true)
+    app.closeSideBar({ withoutAnimation: true })
   } else {
     app.toggleDevice('desktop')
   }
 })
 
 function handleClickOutside() {
-  app.closeSideBar(false)
+  app.closeSideBar({ withoutAnimation: false })
+}
+
+const settingRef = ref(null)
+function setLayout() {
+  settingRef.value.openSetting()
 }
 </script>
 
@@ -89,12 +91,16 @@ function handleClickOutside() {
   top: 0;
   right: 0;
   z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
+  width: calc(100% - #{$base-sidebar-width});
   transition: width 0.28s;
 }
 
 .hideSidebar .fixed-header {
   width: calc(100% - 54px);
+}
+
+.sidebarHide .fixed-header {
+  width: 100%;
 }
 
 .mobile .fixed-header {

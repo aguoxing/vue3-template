@@ -1,17 +1,24 @@
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import IconsResolver from 'unplugin-icons/resolver'
 
 export default function createComponents() {
   return Components({
     // relative paths to the directory to search for components.
-    dirs: ['src/components', 'src/views/components', 'src/layouts/components'],
+    dirs: ['src/components', 'src/views/components', 'src/layout/components'],
 
     // valid file extensions for components.
     extensions: ['vue'],
     // search for subdirectories
     deep: true,
-    // resolvers for custom components
-    resolvers: [ElementPlusResolver()],
+    // resolvers for custom components 自动注册图标组件
+    resolvers: [
+      IconsResolver({
+        prefix: false,
+        enabledCollections: ['ep'],
+      }),
+      ElementPlusResolver()
+    ],
 
     // generate `components.d.ts` global declarations,
     // also accepts a path for custom filename
@@ -31,6 +38,6 @@ export default function createComponents() {
 
     // filters for transforming targets
     include: [/\.vue$/, /\.vue\?vue/],
-    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/]
+    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
   })
 }

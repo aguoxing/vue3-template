@@ -4,6 +4,7 @@ import { UserState } from '@/types/store/user'
 
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { login, logout, getUserInfo } from '@/api/auth'
+import defAva from '@/assets/images/avatar.svg'
 
 import { resetRouter } from '@/router'
 
@@ -33,7 +34,7 @@ const useUserStore = defineStore({
           code: code
         })
           .then((response) => {
-            const accessToken = response.data
+            const accessToken = response.msg
             setToken(accessToken)
             this.token = accessToken
             resolve(accessToken)
@@ -58,7 +59,7 @@ const useUserStore = defineStore({
               reject('getUserInfo: roles must be a non-null array!')
             }
             this.nickname = nickname
-            this.avatar = avatar == "" || avatar == null ? '@/assets/images/avatar.svg' : avatar
+            this.avatar = (avatar == '' || avatar == null) ? defAva : avatar
             this.roles = roles
             this.perms = perms
             resolve(data)

@@ -1,15 +1,21 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { createPinia } from 'pinia'
 import router from './router/index'
-import '@/permission'
+import '@/permission' // 路由守卫
 
-import './assets/styles/global.scss'
 // svg图标
 import 'virtual:svg-icons-register'
 
+// 自定义样式
+import '@/assets/styles/index.scss'
+
+// 注册指令
+import plugins from './plugins' // plugins
+
 // 国际化
 import i18n from './lang/index'
+
+import directive from './directive' // directive
 
 const app = createApp(App)
 // 创建pinia 实例
@@ -17,6 +23,9 @@ const pinia = createPinia()
 
 app.use(pinia)
 app.use(router)
+app.use(plugins)
 app.use(i18n)
+
+directive(app)
 
 app.mount('#app')

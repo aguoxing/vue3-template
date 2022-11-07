@@ -17,10 +17,8 @@ export default {
   },
   // 导航栏国际化
   navbar: {
-    dashboard: 'Dashboard',
+    profile: 'profile',
     setLayout: 'setLayout',
     logout: 'Logout',
-    document: 'Document',
-    gitee: 'Gitee'
   }
 }

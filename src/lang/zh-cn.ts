@@ -16,10 +16,8 @@ export default {
     thirdPartyLogin: '第三方登录'
   },
   navbar: {
-    dashboard: '首页',
+    profile: '个人中心',
     setLayout: '布局设置',
-    logout: '注销',
-    document: '项目文档',
-    gitee: '码云'
+    logout: '退出登录',
   }
 }

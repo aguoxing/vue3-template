@@ -6,6 +6,7 @@ export interface AppState {
   sidebar: {
     opened: boolean
     withoutAnimation: boolean
+    hide: boolean
   }
   language: string
   size: string

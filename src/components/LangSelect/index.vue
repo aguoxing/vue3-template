@@ -13,11 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import useStore from '@/store'
 import { useI18n } from 'vue-i18n'
-import { ElMessage } from 'element-plus'
-import SvgIcon from '@/components/SvgIcon/index.vue'
 
 const { app } = useStore()
 const language = computed(() => app.language)
