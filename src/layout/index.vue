@@ -1,3 +1,5 @@
 <template>
-  <app-main></app-main>
+  <div>
+    <app-main />
+  </div>
 </template>

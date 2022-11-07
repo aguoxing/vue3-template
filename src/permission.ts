@@ -48,12 +48,13 @@ router.beforeEach(async (to, from, next) => {
     }
   } else {
     // 未登录可以访问白名单页面(登录页面)
-    if (whiteList.indexOf(to.path) !== -1) {
+    /* if (whiteList.indexOf(to.path) !== -1) {
       next()
     } else {
       next(`/login?redirect=${to.fullPath}`)
       NProgress.done()
-    }
+    } */
+    next()
   }
 })
 

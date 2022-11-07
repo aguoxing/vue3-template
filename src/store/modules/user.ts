@@ -6,8 +6,6 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 import { login, logout, getUserInfo } from '@/api/auth'
 import defAva from '@/assets/images/avatar.svg'
 
-import { resetRouter } from '@/router'
-
 const useUserStore = defineStore({
   id: 'user',
   state: (): UserState => ({
@@ -80,7 +78,6 @@ const useUserStore = defineStore({
           .then(() => {
             removeToken()
             this.RESET_STATE()
-            resetRouter()
             resolve(null)
           })
           .catch((error) => {

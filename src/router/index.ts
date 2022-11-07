@@ -55,6 +55,12 @@ export const constantRoutes: Array<RouteRecordRaw> = [
         component: () => import('@/views/index.vue'),
         name: 'Index',
         meta: { title: '首页', icon: 'dashboard', affix: true }
+      },
+      {
+        path: '/about',
+        component: () => import('@/views/about.vue'),
+        name: 'About',
+        meta: { title: '关于', icon: 'about', affix: true }
       }
     ]
   }
@@ -72,16 +78,5 @@ const router = createRouter({
   // 刷新时，滚动条位置还原
   scrollBehavior: () => ({ left: 0, top: 0 })
 })
-
-// 重置路由
-export function resetRouter() {
-  const { permission } = useStore()
-  permission.routes.forEach((route) => {
-    const name = route.name
-    if (name && router.hasRoute(name)) {
-      router.removeRoute(name)
-    }
-  })
-}
 
 export default router

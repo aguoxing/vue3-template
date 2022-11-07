@@ -6,6 +6,8 @@ import '@/permission' // 路由守卫
 // svg图标
 import 'virtual:svg-icons-register'
 
+import 'element-plus/theme-chalk/dark/css-vars.css'
+
 // 自定义样式
 import '@/assets/styles/index.scss'
 
