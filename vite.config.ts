@@ -28,7 +28,7 @@ export default defineConfig(({ mode, command }) => {
         [env.VITE_APP_BASE_API]: {
           target: 'http://localhost:8081',
           changeOrigin: true,
-          rewrite: (path) => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), '')
+          rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), '')
         }
       }
     }

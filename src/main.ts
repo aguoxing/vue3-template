@@ -15,7 +15,7 @@ import '@/assets/styles/index.scss'
 import plugins from './plugins' // plugins
 
 // 国际化
-import i18n from './lang/index'
+import i18n from './i18n/index'
 
 import directive from './directive' // directive
 

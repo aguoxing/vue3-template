@@ -1,12 +1,5 @@
 import { Option } from '@/types/common'
-import {
-  DictTypeFormData,
-  DictItemFormData,
-  DictItemPageResult,
-  DictItemQueryParam,
-  DictPageResult,
-  DictQueryParam
-} from '@/types/api/dict'
+import { DictTypeFormData, DictItemFormData, DictItemPageResult, DictItemQueryParam, DictPageResult, DictQueryParam } from '@/types/api/dict'
 import request from '@/utils/request'
 import { AxiosPromise } from 'axios'
 
@@ -87,9 +80,7 @@ export function listDictItemsByTypeCode(typeCode: string): AxiosPromise<Option[]
 /**
  * 获取字典项分页列表
  */
-export function listDictItemPages(
-  queryParams: DictItemQueryParam
-): AxiosPromise<DictItemPageResult> {
+export function listDictItemPages(queryParams: DictItemQueryParam): AxiosPromise<DictItemPageResult> {
   return request({
     url: '/api/v1/dict/items/pages',
     method: 'get',

@@ -31,13 +31,13 @@ const useUserStore = defineStore({
           uuid: uuid,
           code: code
         })
-          .then((response) => {
+          .then(response => {
             const accessToken = response.msg
             setToken(accessToken)
             this.token = accessToken
             resolve(accessToken)
           })
-          .catch((error) => {
+          .catch(error => {
             reject(error)
           })
       })
@@ -57,12 +57,12 @@ const useUserStore = defineStore({
               reject('getUserInfo: roles must be a non-null array!')
             }
             this.nickname = nickname
-            this.avatar = (avatar == '' || avatar == null) ? defAva : avatar
+            this.avatar = avatar == '' || avatar == null ? defAva : avatar
             this.roles = roles
             this.perms = perms
             resolve(data)
           })
-          .catch((error) => {
+          .catch(error => {
             console.log('error', error)
             reject(error)
           })
@@ -80,7 +80,7 @@ const useUserStore = defineStore({
             this.RESET_STATE()
             resolve(null)
           })
-          .catch((error) => {
+          .catch(error => {
             reject(error)
           })
       })
@@ -90,7 +90,7 @@ const useUserStore = defineStore({
      * 清除 Token
      */
     resetToken() {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         removeToken()
         this.RESET_STATE()
         resolve(null)

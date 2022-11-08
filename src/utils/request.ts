@@ -31,7 +31,7 @@ service.interceptors.request.use(
     }
     return config
   },
-  (error) => {
+  error => {
     console.log(error)
     Promise.reject(error)
   }
@@ -76,7 +76,7 @@ service.interceptors.response.use(
       return Promise.resolve(res.data)
     }
   },
-  (error) => {
+  error => {
     console.log('err' + error)
     let { message } = error
     if (message == 'Network Error') {

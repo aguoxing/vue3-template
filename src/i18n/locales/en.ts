@@ -20,5 +20,7 @@ export default {
     profile: 'profile',
     setLayout: 'setLayout',
     logout: 'Logout',
+    home: 'Home',
+    about: 'About'
   }
 }

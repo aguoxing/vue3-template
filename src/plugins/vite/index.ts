@@ -11,7 +11,16 @@ export default function createVitePlugins(viteEnv: any, isBuild = false) {
   vitePlugins.push(createSvgIcon(isBuild))
   vitePlugins.push(createAutoImport())
   vitePlugins.push(createComponents())
-  vitePlugins.push(Icons({autoInstall: true}))
+  vitePlugins.push(
+    Icons({
+      autoInstall: true,
+      compiler: 'vue3' // 编译方式
+      // scale: 1, // 缩放
+      // defaultClass: '', // 默认类名
+      // defaultStyle: '', // 默认样式
+      // jsx: 'react' // jsx支持
+    })
+  )
   vitePlugins.push(createMockServer())
   isBuild && vitePlugins.push(...createCompression(viteEnv))
   return vitePlugins

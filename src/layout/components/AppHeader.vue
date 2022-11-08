@@ -15,6 +15,7 @@
             @click="goto(menu.path)"
           ></div>
 
+          <lang-select />
           <dark-mode />
         </div>
         <div class="nav-menu-mobile">
@@ -24,12 +25,7 @@
             </div>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item
-                  v-for="(menu, index) in navMenus"
-                  :key="index"
-                  @click="goto(menu.path)"
-                  >{{ menu.name }}</el-dropdown-item
-                >
+                <el-dropdown-item v-for="(menu, index) in navMenus" :key="index" @click="goto(menu.path)">{{ menu.name }}</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>

@@ -1,16 +1,10 @@
 <template>
   <div class="app-container">
-    <li>
-      https://icon-sets.iconify.design/ep/
-    </li>
+    <h1 style="text-align: center">{{ $t('navbar.about') }}</h1>
+    <li>https://icon-sets.iconify.design/ep/</li>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

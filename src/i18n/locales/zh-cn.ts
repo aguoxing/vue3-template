@@ -19,5 +19,7 @@ export default {
     profile: '个人中心',
     setLayout: '布局设置',
     logout: '退出登录',
+    home: '首页',
+    about: '关于'
   }
 }

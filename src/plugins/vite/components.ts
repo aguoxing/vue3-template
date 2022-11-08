@@ -13,9 +13,13 @@ export default function createComponents() {
     deep: true,
     // resolvers for custom components 自动注册图标组件
     resolvers: [
+      // prefix: 自动引入的Icon组件统一前缀，默认为 i，设置false为不需要前缀
+      // {prefix}-{collection}-{icon} 使用组件解析器时，您必须遵循名称转换才能正确推断图标。
+      // alias: { park: 'icon-park' } 集合的别名
+      // enabledCollections: 这是可选的，默认启用 Iconify 支持的所有集合['mdi']
       IconsResolver({
         prefix: false,
-        enabledCollections: ['ep'],
+        enabledCollections: ['ep']
       }),
       ElementPlusResolver()
     ],
@@ -38,6 +42,6 @@ export default function createComponents() {
 
     // filters for transforming targets
     include: [/\.vue$/, /\.vue\?vue/],
-    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
+    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/]
   })
 }

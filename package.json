@@ -6,7 +6,8 @@
     "dev": "vite serve --mode development",
     "build:prod": "vue-tsc --noEmit && vite build",
     "build:stage": "vite build --mode staging",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@vueuse/core": "^9.4.0",

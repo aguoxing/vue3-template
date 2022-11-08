@@ -1,5 +1,5 @@
 import { AppState } from '@/types/store/app'
-import { getLanguage } from '@/lang/index'
+import { getLanguage } from '@/i18n/index'
 import { localStorage } from '@/utils/storage'
 
 const useAppStore = defineStore({

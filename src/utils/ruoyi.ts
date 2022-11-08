@@ -54,10 +54,7 @@ export function resetForm(refName) {
 // 添加日期范围
 export function addDateRange(params, dateRange, propName) {
   let search = params
-  search.params =
-    typeof search.params === 'object' && search.params !== null && !Array.isArray(search.params)
-      ? search.params
-      : {}
+  search.params = typeof search.params === 'object' && search.params !== null && !Array.isArray(search.params) ? search.params : {}
   dateRange = Array.isArray(dateRange) ? dateRange : []
   if (typeof propName === 'undefined') {
     search.params['beginTime'] = dateRange[0]
@@ -72,7 +69,7 @@ export function addDateRange(params, dateRange, propName) {
 // 回显数据字典
 export function selectDictLabel(datas, value) {
   var actions = []
-  Object.keys(datas).some((key) => {
+  Object.keys(datas).some(key => {
     if (datas[key].value == '' + value) {
       actions.push(datas[key].label)
       return true
@@ -86,8 +83,8 @@ export function selectDictLabels(datas, value, separator) {
   var actions = []
   var currentSeparator = undefined === separator ? ',' : separator
   var temp = value.split(currentSeparator)
-  Object.keys(value.split(currentSeparator)).some((val) => {
-    Object.keys(datas).some((key) => {
+  Object.keys(value.split(currentSeparator)).some(val => {
+    Object.keys(datas).some(key => {
       if (datas[key].value == '' + temp[val]) {
         actions.push(datas[key].label + currentSeparator)
       }
