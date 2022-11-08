@@ -94,13 +94,15 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
+            type="primary"
             @click="handleUpdate(scope.row)"
             v-hasPerms="['system:notice:edit']"
             ><ep:edit/>修改</el-button
           >
           <el-button
-            type="text"
+            link
+            type="danger"
             @click="handleDelete(scope.row)"
             v-hasPerms="['system:notice:remove']"
             ><ep:delete />删除</el-button
@@ -169,7 +171,7 @@
   </div>
 </template>
 
-<script setup name="Notice">
+<script lang="ts" setup name="Notice">
 import { listNotice, getNotice, delNotice, addNotice, updateNotice } from '@/api/system/notice'
 
 const { proxy } = getCurrentInstance()

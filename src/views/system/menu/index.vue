@@ -89,24 +89,27 @@
       <el-table-column
         label="操作"
         align="center"
-        width="200"
+        width="250"
         class-name="small-padding fixed-width"
       >
         <template #default="scope">
           <el-button
-            type="text"
+            link
+            type="primary"
             @click="handleUpdate(scope.row)"
             v-hasPerms="['system:menu:edit']"
             ><ep:edit/>修改</el-button
           >
           <el-button
-            type="text"
+            link
+            type="primary"
             @click="handleAdd(scope.row)"
             v-hasPerms="['system:menu:add']"
             ><ep:plus/>新增</el-button
           >
           <el-button
-            type="text"
+            link
+            type="danger"
             @click="handleDelete(scope.row)"
             v-hasPerms="['system:menu:remove']"
             ><ep:delete/>删除</el-button
@@ -164,7 +167,7 @@
                         class="el-input__icon"
                         style="height: 32px; width: 16px"
                       />
-                      <el-icon v-else style="height: 32px; width: 16px"><search /></el-icon>
+                      <el-icon v-else style="height: 32px; width: 16px"><ep:search /></el-icon>
                     </template>
                   </el-input>
                 </template>
@@ -187,7 +190,7 @@
               <template #label>
                 <span>
                   <el-tooltip content="选择是外链则路由地址需要以`http(s)://`开头" placement="top">
-                    <el-icon><question-filled /></el-icon> </el-tooltip
+                    <el-icon><ep:question-filled /></el-icon> </el-tooltip
                   >是否外链
                 </span>
               </template>
@@ -205,7 +208,7 @@
                     content="访问的路由地址，如：`user`，如外网地址需内链访问则以`http(s)://`开头"
                     placement="top"
                   >
-                    <el-icon><question-filled /></el-icon>
+                    <el-icon><ep:question-filled /></el-icon>
                   </el-tooltip>
                   路由地址
                 </span>
@@ -221,7 +224,7 @@
                     content="访问的组件路径，如：`system/user/index`，默认在`views`目录下"
                     placement="top"
                   >
-                    <el-icon><question-filled /></el-icon>
+                    <el-icon><ep:question-filled /></el-icon>
                   </el-tooltip>
                   组件路径
                 </span>
@@ -238,7 +241,7 @@
                     content="控制器中定义的权限字符，如：@PreAuthorize(`@ss.hasPermi('system:user:list')`)"
                     placement="top"
                   >
-                    <el-icon><question-filled /></el-icon>
+                    <el-icon><ep:question-filled /></el-icon>
                   </el-tooltip>
                   权限字符
                 </span>
@@ -254,7 +257,7 @@
                     content='访问路由的默认传递参数，如：`{"id": 1, "name": "ry"}`'
                     placement="top"
                   >
-                    <el-icon><question-filled /></el-icon>
+                    <el-icon><ep:question-filled /></el-icon>
                   </el-tooltip>
                   路由参数
                 </span>
@@ -269,7 +272,7 @@
                     content="选择是则会被`keep-alive`缓存，需要匹配组件的`name`和地址保持一致"
                     placement="top"
                   >
-                    <el-icon><question-filled /></el-icon>
+                    <el-icon><ep:question-filled /></el-icon>
                   </el-tooltip>
                   是否缓存
                 </span>
@@ -288,7 +291,7 @@
                     content="选择隐藏则路由将不会出现在侧边栏，但仍然可以访问"
                     placement="top"
                   >
-                    <el-icon><question-filled /></el-icon>
+                    <el-icon><ep:question-filled /></el-icon>
                   </el-tooltip>
                   显示状态
                 </span>
@@ -308,7 +311,7 @@
                     content="选择停用则路由将不会出现在侧边栏，也不能被访问"
                     placement="top"
                   >
-                    <el-icon><question-filled /></el-icon>
+                    <el-icon><ep:question-filled /></el-icon>
                   </el-tooltip>
                   菜单状态
                 </span>
@@ -335,7 +338,7 @@
   </div>
 </template>
 
-<script setup name="Menu">
+<script lang="ts" setup name="Menu">
 import { addMenu, delMenu, getMenu, listTreeByPage, updateMenu } from '@/api/system/menu'
 import SvgIcon from '@/components/SvgIcon'
 import IconSelect from '@/components/IconSelect'

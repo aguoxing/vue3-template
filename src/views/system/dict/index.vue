@@ -51,8 +51,12 @@
         ></el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
-        <el-button icon="Refresh" @click="resetQuery">重置</el-button>
+        <el-button type="primary" @click="handleQuery">
+          <ep:search />搜索
+        </el-button>
+        <el-button @click="resetQuery">
+          <ep:refresh />重置
+        </el-button>
       </el-form-item>
     </el-form>
 
@@ -61,58 +65,43 @@
         <el-button
           type="primary"
           plain
-          icon="Plus"
           @click="handleAdd"
           v-hasPerms="['system:dict:add']"
-          >新增</el-button
-        >
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="Edit"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPerms="['system:dict:edit']"
-          >修改</el-button
+          ><ep:plus/>新增</el-button
         >
       </el-col>
       <el-col :span="1.5">
         <el-button
           type="danger"
           plain
-          icon="Delete"
           :disabled="multiple"
           @click="handleDelete"
           v-hasPerms="['system:dict:remove']"
-          >删除</el-button
+          ><ep:delete/>删除</el-button
         >
       </el-col>
       <el-col :span="1.5">
         <el-button
           type="warning"
           plain
-          icon="Download"
           @click="handleExport"
           v-hasPerms="['system:dict:export']"
-          >导出</el-button
+          ><ep:download/>导出</el-button
         >
       </el-col>
       <el-col :span="1.5">
         <el-button
           type="danger"
           plain
-          icon="Refresh"
           @click="handleRefreshCache"
           v-hasPerms="['system:dict:remove']"
-          >刷新缓存</el-button
+          ><ep:refresh/>刷新缓存</el-button
         >
       </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="typeList" @selection-change="handleSelectionChange">
+    <el-table border v-loading="loading" :data="typeList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="字典编号" align="center" prop="dictId" />
       <el-table-column
@@ -142,18 +131,18 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
-            icon="Edit"
+            link
+            type="primary"
             @click="handleUpdate(scope.row)"
             v-hasPerms="['system:dict:edit']"
-            >修改</el-button
+            ><ep:edit/>修改</el-button
           >
           <el-button
-            type="text"
-            icon="Delete"
+            link
+            type="danger"
             @click="handleDelete(scope.row)"
             v-hasPerms="['system:dict:remove']"
-            >删除</el-button
+            ><ep:delete/>删除</el-button
           >
         </template>
       </el-table-column>
@@ -197,7 +186,7 @@
   </div>
 </template>
 
-<script setup name="Dict">
+<script lang="ts" setup name="Dict">
 import useDictStore from '@/store/modules/dict'
 import {
   listType,
@@ -243,8 +232,8 @@ const { queryParams, form, rules } = toRefs(data)
 function getList() {
   loading.value = true
   listType(proxy.addDateRange(queryParams.value, dateRange.value)).then((response) => {
-    typeList.value = response.rows
-    total.value = response.total
+    typeList.value = response.data.rows
+    total.value = response.data.total
     loading.value = false
   })
 }

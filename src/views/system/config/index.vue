@@ -117,14 +117,16 @@
       >
         <template #default="scope">
           <el-button
-            type="text"
+            link
+            type="primary"
             @click="handleUpdate(scope.row)"
             v-hasPerms="['system:config:edit']"
             >
             <ep:edit /> 修改
           </el-button>
           <el-button
-            type="text"
+            link
+            type="danger"
             @click="handleDelete(scope.row)"
             v-hasPerms="['system:config:remove']">
             <ep:delete /> 删除

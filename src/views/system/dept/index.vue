@@ -72,20 +72,23 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
+            type="primary"
             @click="handleUpdate(scope.row)"
             v-hasPerms="['system:dept:edit']">
             <ep:edit /> 修改
           </el-button>
           <el-button
-            type="text"
+            link
+            type="primary"
             @click="handleAdd(scope.row)"
             v-hasPerms="['system:dept:add']">
             <ep:plus /> 新增
-            </el-button>
+          </el-button>
           <el-button
+            link
+            type="danger"
             v-if="scope.row.parentId != 0"
-            type="text"
             @click="handleDelete(scope.row)"
             v-hasPerms="['system:dept:remove']"
           >

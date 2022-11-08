@@ -101,31 +101,35 @@
         <template #default="scope">
           <el-tooltip content="修改" placement="top" v-if="scope.row.roleId !== 1">
             <el-button
-              type="text"
+              link
+              type="primary"
               @click="handleUpdate(scope.row)"
               v-hasPerms="['system:role:edit']"
             ><ep:edit /></el-button>
           </el-tooltip>
-          <el-tooltip content="删除" placement="top" v-if="scope.row.roleId !== 1">
-            <el-button
-              type="text"
-              @click="handleDelete(scope.row)"
-              v-hasPerms="['system:role:remove']"
-            ><ep:delete /></el-button>
-          </el-tooltip>
           <el-tooltip content="数据权限" placement="top" v-if="scope.row.roleId !== 1">
             <el-button
-              type="text"
+              link
+              type="primary"
               @click="handleDataScope(scope.row)"
               v-hasPerms="['system:role:edit']"
             ><ep:circle-check/></el-button>
           </el-tooltip>
           <el-tooltip content="分配用户" placement="top" v-if="scope.row.roleId !== 1">
             <el-button
-              type="text"
+              link
+              type="primary"
               @click="handleAuthUser(scope.row)"
               v-hasPerms="['system:role:edit']"
             ><ep:user /></el-button>
+          </el-tooltip>
+          <el-tooltip content="删除" placement="top" v-if="scope.row.roleId !== 1">
+            <el-button
+              link
+              type="danger"
+              @click="handleDelete(scope.row)"
+              v-hasPerms="['system:role:remove']"
+            ><ep:delete /></el-button>
           </el-tooltip>
         </template>
       </el-table-column>
@@ -152,7 +156,7 @@
                 content="控制器中定义的权限字符，如：@PreAuthorize(`@ss.hasRole('admin')`)"
                 placement="top"
               >
-                <el-icon><question-filled /></el-icon>
+                <el-icon><ep:question-filled /></el-icon>
               </el-tooltip>
               权限字符
             </span>
@@ -258,7 +262,7 @@
   </div>
 </template>
 
-<script setup name="Role">
+<script lang="ts" setup name="Role">
 import {
   addRole,
   changeRoleStatus,

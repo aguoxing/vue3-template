@@ -188,37 +188,41 @@
           <el-table-column
             label="操作"
             align="center"
-            width="150"
+            width="180"
             class-name="small-padding fixed-width"
           >
             <template #default="scope">
               <el-tooltip content="修改" placement="top" v-if="scope.row.userId !== 1">
                 <el-button
-                  type="text"
+                  link
+                  type="primary"
                   @click="handleUpdate(scope.row)"
                   v-hasPerms="['system:user:edit']"
                 ><ep:edit /></el-button>
               </el-tooltip>
-              <el-tooltip content="删除" placement="top" v-if="scope.row.userId !== 1">
-                <el-button
-                  type="text"
-                  @click="handleDelete(scope.row)"
-                  v-hasPerms="['system:user:remove']"
-                ><ep:delete /></el-button>
-              </el-tooltip>
               <el-tooltip content="重置密码" placement="top" v-if="scope.row.userId !== 1">
                 <el-button
-                  type="text"
+                  link
+                  type="primary"
                   @click="handleResetPwd(scope.row)"
                   v-hasPerms="['system:user:resetPwd']"
                 ><ep:key /></el-button>
               </el-tooltip>
               <el-tooltip content="分配角色" placement="top" v-if="scope.row.userId !== 1">
                 <el-button
-                  type="text"
+                  link
+                  type="primary"
                   @click="handleAuthRole(scope.row)"
                   v-hasPerms="['system:user:edit']"
                 ><ep:circle-check /></el-button>
+              </el-tooltip>
+              <el-tooltip content="删除" placement="top" v-if="scope.row.userId !== 1">
+                <el-button
+                  link
+                  type="danger"
+                  @click="handleDelete(scope.row)"
+                  v-hasPerms="['system:user:remove']"
+                ><ep:delete /></el-button>
               </el-tooltip>
             </template>
           </el-table-column>
@@ -369,7 +373,7 @@
         :auto-upload="false"
         drag
       >
-        <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+        <el-icon class="el-icon--upload"><ep:upload /></el-icon>
         <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
         <template #tip>
           <div class="el-upload__tip text-center">

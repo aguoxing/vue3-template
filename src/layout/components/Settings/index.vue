@@ -1,8 +1,16 @@
 <template>
   <el-drawer v-model="showSettings" :withHeader="false" direction="rtl" size="300px">
-    <div class="setting-drawer-title">
-      <h3 class="drawer-title">主题风格设置</h3>
+    <el-divider content-position="center">主题</el-divider>
+    <div class="theme-switch">
+      <el-switch
+        v-model="isDark"
+        inline-prompt
+        active-icon="ep:moon"
+        inactive-icon="ep:sunny"
+        @change="toggleDark"
+      />
     </div>
+    <el-divider content-position="center">导航栏模式</el-divider>
     <div class="setting-drawer-block-checbox">
       <div class="setting-drawer-block-checbox-item" @click="handleTheme('theme-dark')">
         <img src="@/assets/images/dark.svg" alt="dark" />
@@ -55,47 +63,42 @@
         </div>
       </div>
     </div>
-    <div class="drawer-item">
-      <span>主题颜色</span>
-      <span class="comp-style">
-        <el-color-picker v-model="theme" :predefine="predefineColors" @change="themeChange" />
-      </span>
+    <el-divider content-position="center">主题色</el-divider>
+    <div>
+      <el-color-picker v-model="theme" :predefine="predefineColors" @change="themeChange" />
     </div>
-    <el-divider />
-
-    <h3 class="drawer-title">系统布局配置</h3>
-
+    <el-divider content-position="center">系统布局配置</el-divider>
     <div class="drawer-item">
       <span>开启 TopNav</span>
-      <span class="comp-style">
+      <span>
         <el-switch v-model="topNav" class="drawer-switch" />
       </span>
     </div>
 
     <div class="drawer-item">
       <span>开启 Tags-Views</span>
-      <span class="comp-style">
+      <span>
         <el-switch v-model="tagsView" class="drawer-switch" />
       </span>
     </div>
 
     <div class="drawer-item">
       <span>固定 Header</span>
-      <span class="comp-style">
+      <span>
         <el-switch v-model="fixedHeader" class="drawer-switch" />
       </span>
     </div>
 
     <div class="drawer-item">
       <span>显示 Logo</span>
-      <span class="comp-style">
+      <span>
         <el-switch v-model="sidebarLogo" class="drawer-switch" />
       </span>
     </div>
 
     <div class="drawer-item">
       <span>动态标题</span>
-      <span class="comp-style">
+      <span>
         <el-switch v-model="dynamicTitle" class="drawer-switch" />
       </span>
     </div>
@@ -118,7 +121,11 @@ import { useDynamicTitle } from '@/utils/dynamicTitle'
 import { handleThemeStyle } from '@/utils/theme'
 
 import useStore from '@/store'
+import { useDark,useToggle } from '@vueuse/core'
 const { app, setting, permission } = useStore()
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 
 const { proxy } = getCurrentInstance()
 const showSettings = ref(false)
@@ -269,10 +276,13 @@ defineExpose({
   color: rgba(0, 0, 0, 0.65);
   padding: 12px 0;
   font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  .comp-style {
-    float: right;
-    margin: -3px 8px 0px 0px;
-  }
+.theme-switch {
+  text-align: center;
 }
 </style>
