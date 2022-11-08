@@ -12,12 +12,7 @@
       class="header-search-select"
       @change="change"
     >
-      <el-option
-        v-for="option in options"
-        :key="option.item.path"
-        :value="option.item"
-        :label="option.item.title.join(' > ')"
-      />
+      <el-option v-for="option in options" :key="option.item.path" :value="option.item" :label="option.item.title.join(' > ')" />
     </el-select>
   </div>
 </template>
@@ -136,7 +131,7 @@ watchEffect(() => {
   searchPool.value = generateRoutes(routes.value)
 })
 
-watch(show, (value) => {
+watch(show, value => {
   if (value) {
     document.body.addEventListener('click', close)
   } else {
@@ -144,7 +139,7 @@ watch(show, (value) => {
   }
 })
 
-watch(searchPool, (list) => {
+watch(searchPool, list => {
   initFuse(list)
 })
 </script>

@@ -107,9 +107,7 @@
                 </el-button>
                 <template #dropdown>
                   <el-dropdown-menu>
-                    <el-dropdown-item @click="info.genPath = '/'"
-                      >恢复默认的生成基础路径</el-dropdown-item
-                    >
+                    <el-dropdown-item @click="info.genPath = '/'">恢复默认的生成基础路径</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
@@ -269,14 +267,14 @@ function setSubTableColumns(value) {
 }
 /** 查询菜单下拉树结构 */
 function getMenuTreeselect() {
-  listMenu().then((response) => {
+  listMenu().then(response => {
     menuOptions.value = proxy.handleTree(response.data, 'menuId')
   })
 }
 
 watch(
   () => props.info.subTableName,
-  (val) => {
+  val => {
     setSubTableColumns(val)
   }
 )

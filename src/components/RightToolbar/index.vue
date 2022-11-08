@@ -2,13 +2,7 @@
   <div class="top-right-btn" :style="style">
     <el-row>
       <el-button-group>
-        <el-tooltip
-          class="item"
-          effect="dark"
-          :content="showSearch ? '隐藏搜索' : '显示搜索'"
-          placement="top"
-          v-if="search"
-        >
+        <el-tooltip class="item" effect="dark" :content="showSearch ? '隐藏搜索' : '显示搜索'" placement="top" v-if="search">
           <el-button @click="toggleSearch()">
             <ep:search />
           </el-button>
@@ -26,12 +20,9 @@
       </el-button-group>
     </el-row>
     <el-dialog :title="title" v-model="open" append-to-body>
-      <el-transfer
-        :titles="['显示', '隐藏']"
-        v-model="value"
-        :data="columns"
-        @change="dataChange"
-      ></el-transfer>
+      <div class="dialog-transfer">
+        <el-transfer :titles="['显示', '隐藏']" v-model="value" :data="columns" @change="dataChange"></el-transfer>
+      </div>
     </el-dialog>
   </div>
 </template>
@@ -113,7 +104,7 @@ for (let item in props.columns) {
   margin-bottom: 10px;
 }
 
-.my-el-transfer {
+.dialog-transfer {
   text-align: center;
 }
 </style>

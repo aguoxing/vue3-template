@@ -14,8 +14,8 @@ export function useDict(...args) {
       if (dicts) {
         res.value[dictType] = dicts
       } else {
-        getDicts(dictType).then((resp) => {
-          res.value[dictType] = resp.data.rows.map((p) => ({
+        getDicts(dictType).then(resp => {
+          res.value[dictType] = resp.data.rows.map(p => ({
             label: p.dictLabel,
             value: p.dictValue,
             elTagType: p.listClass,

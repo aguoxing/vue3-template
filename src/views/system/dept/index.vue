@@ -2,21 +2,11 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch">
       <el-form-item label="部门名称" prop="deptName">
-        <el-input
-          v-model="queryParams.deptName"
-          placeholder="请输入部门名称"
-          clearable
-          @keyup.enter="handleQuery"
-        />
+        <el-input v-model="queryParams.deptName" placeholder="请输入部门名称" clearable @keyup.enter="handleQuery" />
       </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="部门状态" clearable>
-          <el-option
-            v-for="dict in sys_normal_disable"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
+          <el-option v-for="dict in sys_normal_disable" :key="dict.value" :label="dict.label" :value="dict.value" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -27,9 +17,7 @@
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:dept:add']">
-          <ep:plus /> 新增
-        </el-button>
+        <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:dept:add']"> <ep:plus /> 新增 </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="info" plain @click="toggleExpandAll"> <ep:sort /> 展开/折叠 </el-button>
@@ -60,29 +48,9 @@
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
-          <el-button
-            link
-            type="primary"
-            @click="handleUpdate(scope.row)"
-            v-hasPerms="['system:dept:edit']"
-          >
-            <ep:edit /> 修改
-          </el-button>
-          <el-button
-            link
-            type="primary"
-            @click="handleAdd(scope.row)"
-            v-hasPerms="['system:dept:add']"
-          >
-            <ep:plus /> 新增
-          </el-button>
-          <el-button
-            link
-            type="danger"
-            v-if="scope.row.parentId != 0"
-            @click="handleDelete(scope.row)"
-            v-hasPerms="['system:dept:remove']"
-          >
+          <el-button link type="primary" @click="handleUpdate(scope.row)" v-hasPerms="['system:dept:edit']"> <ep:edit /> 修改 </el-button>
+          <el-button link type="primary" @click="handleAdd(scope.row)" v-hasPerms="['system:dept:add']"> <ep:plus /> 新增 </el-button>
+          <el-button link type="danger" v-if="scope.row.parentId != 0" @click="handleDelete(scope.row)" v-hasPerms="['system:dept:remove']">
             <ep:delete /> 删除
           </el-button>
         </template>
@@ -133,12 +101,7 @@
           <el-col :span="12">
             <el-form-item label="部门状态">
               <el-radio-group v-model="form.status">
-                <el-radio
-                  v-for="dict in sys_normal_disable"
-                  :key="dict.value"
-                  :label="dict.value"
-                  >{{ dict.label }}</el-radio
-                >
+                <el-radio v-for="dict in sys_normal_disable" :key="dict.value" :label="dict.value">{{ dict.label }}</el-radio>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -155,14 +118,7 @@
 </template>
 
 <script lang="ts" setup name="Dept">
-import {
-  listDeptTree,
-  getDept,
-  delDept,
-  addDept,
-  updateDept,
-  listDeptExcludeChild
-} from '@/api/system/dept'
+import { listDeptTree, getDept, delDept, addDept, updateDept, listDeptExcludeChild } from '@/api/system/dept'
 
 const { proxy } = getCurrentInstance()
 const { sys_normal_disable } = proxy.useDict('sys_normal_disable')
@@ -187,9 +143,7 @@ const data = reactive({
     deptName: [{ required: true, message: '部门名称不能为空', trigger: 'blur' }],
     orderNum: [{ required: true, message: '显示排序不能为空', trigger: 'blur' }],
     email: [{ type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }],
-    phone: [
-      { pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/, message: '请输入正确的手机号码', trigger: 'blur' }
-    ]
+    phone: [{ pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/, message: '请输入正确的手机号码', trigger: 'blur' }]
   }
 })
 
@@ -198,7 +152,7 @@ const { queryParams, form, rules } = toRefs(data)
 /** 查询部门列表 */
 function getList() {
   loading.value = true
-  listDeptTree(queryParams.value).then((response) => {
+  listDeptTree(queryParams.value).then(response => {
     deptList.value = response.data
     loading.value = false
   })
@@ -234,7 +188,7 @@ function resetQuery() {
 /** 新增按钮操作 */
 function handleAdd(row) {
   reset()
-  listDept().then((response) => {
+  listDept().then(response => {
     deptOptions.value = proxy.handleTree(response.data, 'deptId')
   })
   if (row != undefined) {
@@ -254,10 +208,10 @@ function toggleExpandAll() {
 /** 修改按钮操作 */
 function handleUpdate(row) {
   reset()
-  listDeptExcludeChild(row.deptId).then((response) => {
+  listDeptExcludeChild(row.deptId).then(response => {
     deptOptions.value = proxy.handleTree(response.data, 'deptId')
   })
-  getDept(row.deptId).then((response) => {
+  getDept(row.deptId).then(response => {
     form.value = response.data
     open.value = true
     title.value = '修改部门'
@@ -265,16 +219,16 @@ function handleUpdate(row) {
 }
 /** 提交按钮 */
 function submitForm() {
-  proxy.$refs['deptRef'].validate((valid) => {
+  proxy.$refs['deptRef'].validate(valid => {
     if (valid) {
       if (form.value.deptId != undefined) {
-        updateDept(form.value).then((response) => {
+        updateDept(form.value).then(response => {
           proxy.$modal.msgSuccess('修改成功')
           open.value = false
           getList()
         })
       } else {
-        addDept(form.value).then((response) => {
+        addDept(form.value).then(response => {
           proxy.$modal.msgSuccess('新增成功')
           open.value = false
           getList()

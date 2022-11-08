@@ -4,8 +4,7 @@ import defaultSettings from '@/settings'
 import { localStorage } from '@/utils/storage'
 import { useDynamicTitle } from '@/utils/dynamicTitle'
 
-const { sideTheme, showSettings, topNav, tagsView, fixedHeader, sidebarLogo, dynamicTitle } =
-  defaultSettings
+const { sideTheme, showSettings, topNav, tagsView, fixedHeader, sidebarLogo, dynamicTitle } = defaultSettings
 
 const storageSetting = JSON.parse(localStorage.get('layout-setting')) || ''
 const el = document.documentElement
@@ -19,12 +18,9 @@ export const useSettingStore = defineStore({
     showSettings: showSettings,
     topNav: storageSetting.topNav === undefined ? topNav : storageSetting.topNav,
     tagsView: storageSetting.tagsView === undefined ? tagsView : storageSetting.tagsView,
-    fixedHeader:
-      storageSetting.fixedHeader === undefined ? fixedHeader : storageSetting.fixedHeader,
-    sidebarLogo:
-      storageSetting.sidebarLogo === undefined ? sidebarLogo : storageSetting.sidebarLogo,
-    dynamicTitle:
-      storageSetting.dynamicTitle === undefined ? dynamicTitle : storageSetting.dynamicTitle
+    fixedHeader: storageSetting.fixedHeader === undefined ? fixedHeader : storageSetting.fixedHeader,
+    sidebarLogo: storageSetting.sidebarLogo === undefined ? sidebarLogo : storageSetting.sidebarLogo,
+    dynamicTitle: storageSetting.dynamicTitle === undefined ? dynamicTitle : storageSetting.dynamicTitle
   }),
   actions: {
     async changeSetting(payload: { key: string; value: any }) {

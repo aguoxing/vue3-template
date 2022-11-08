@@ -3,8 +3,7 @@
     class="sidebar-logo-container"
     :class="{ collapse: collapse }"
     :style="{
-      backgroundColor:
-        sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground
+      backgroundColor: sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground
     }"
   >
     <transition name="sidebarLogoFade">
@@ -14,8 +13,7 @@
           v-else
           class="sidebar-title"
           :style="{
-            color:
-              sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor
+            color: sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor
           }"
         >
           {{ title }}
@@ -26,8 +24,7 @@
         <h1
           class="sidebar-title"
           :style="{
-            color:
-              sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor
+            color: sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor
           }"
         >
           {{ title }}

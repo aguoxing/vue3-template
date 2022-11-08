@@ -3,20 +3,10 @@
   <el-dialog title="选择用户" v-model="visible" width="800px" top="5vh" append-to-body>
     <el-form :model="queryParams" ref="queryRef" :inline="true">
       <el-form-item label="用户名称" prop="userName">
-        <el-input
-          v-model="queryParams.userName"
-          placeholder="请输入用户名称"
-          clearable
-          @keyup.enter="handleQuery"
-        />
+        <el-input v-model="queryParams.userName" placeholder="请输入用户名称" clearable @keyup.enter="handleQuery" />
       </el-form-item>
       <el-form-item label="手机号码" prop="phonenumber">
-        <el-input
-          v-model="queryParams.phonenumber"
-          placeholder="请输入手机号码"
-          clearable
-          @keyup.enter="handleQuery"
-        />
+        <el-input v-model="queryParams.phonenumber" placeholder="请输入手机号码" clearable @keyup.enter="handleQuery" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
@@ -24,13 +14,7 @@
       </el-form-item>
     </el-form>
     <el-row>
-      <el-table
-        @row-click="clickRow"
-        ref="refTable"
-        :data="userList"
-        @selection-change="handleSelectionChange"
-        height="260px"
-      >
+      <el-table @row-click="clickRow" ref="refTable" :data="userList" @selection-change="handleSelectionChange" height="260px">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column label="用户名称" prop="userName" :show-overflow-tooltip="true" />
         <el-table-column label="用户昵称" prop="nickName" :show-overflow-tooltip="true" />
@@ -47,13 +31,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <pagination
-        v-show="total > 0"
-        :total="total"
-        v-model:page="queryParams.pageNum"
-        v-model:limit="queryParams.pageSize"
-        @pagination="getList"
-      />
+      <pagination v-show="total > 0" :total="total" v-model:page="queryParams.pageNum" v-model:limit="queryParams.pageSize" @pagination="getList" />
     </el-row>
     <template #footer>
       <div class="dialog-footer">
@@ -101,11 +79,11 @@ function clickRow(row) {
 }
 // 多选框选中数据
 function handleSelectionChange(selection) {
-  userIds.value = selection.map((item) => item.userId)
+  userIds.value = selection.map(item => item.userId)
 }
 // 查询表数据
 function getList() {
-  unallocatedUserList(queryParams).then((res) => {
+  unallocatedUserList(queryParams).then(res => {
     userList.value = res.rows
     total.value = res.total
   })
@@ -129,7 +107,7 @@ function handleSelectUser() {
     proxy.$modal.msgError('请选择要分配的用户')
     return
   }
-  authUserSelectAll({ roleId: roleId, userIds: uIds }).then((res) => {
+  authUserSelectAll({ roleId: roleId, userIds: uIds }).then(res => {
     proxy.$modal.msgSuccess(res.msg)
     if (res.code === 200) {
       visible.value = false

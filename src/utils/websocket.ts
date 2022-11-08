@@ -65,23 +65,23 @@ const createWebSocket = () => {
 const initWsEventHandle = () => {
   try {
     // 连接成功
-    wsObj.onopen = (event) => {
+    wsObj.onopen = event => {
       onWsOpen(event)
       heartCheck.start()
     }
 
     // 监听服务器端返回的信息
-    wsObj.onmessage = (event) => {
+    wsObj.onmessage = event => {
       onWsMessage(event)
       heartCheck.start()
     }
 
-    wsObj.onclose = (event) => {
+    wsObj.onclose = event => {
       writeToScreen('onclose执行关闭事件')
       onWsClose(event)
     }
 
-    wsObj.onerror = (event) => {
+    wsObj.onerror = event => {
       writeToScreen('onerror执行error事件，开始重连')
       onWsError(event)
       reconnect()
@@ -92,7 +92,7 @@ const initWsEventHandle = () => {
   }
 }
 
-const onWsOpen = (event) => {
+const onWsOpen = event => {
   writeToScreen('CONNECT')
   // // 客户端与服务器端通信
   // wsObj.send('我发送消息给服务端');
@@ -109,12 +109,12 @@ const onWsOpen = (event) => {
     errorCallback()
   }
 }
-const onWsMessage = (event) => {
+const onWsMessage = event => {
   const jsonStr = event.data
   writeToScreen('onWsMessage接收到服务器的数据: ', jsonStr)
   messageCallback(jsonStr)
 }
-const onWsClose = (event) => {
+const onWsClose = event => {
   writeToScreen('DISCONNECT')
   // e.code === 1000  表示正常关闭。 无论为何目的而创建, 该链接都已成功完成任务。
   // e.code !== 1000  表示非正常关闭。
@@ -126,12 +126,12 @@ const onWsClose = (event) => {
     reconnect()
   }
 }
-const onWsError = (event) => {
+const onWsError = event => {
   writeToScreen('onWsError: ', event.data)
   errorCallback()
 }
 
-const writeToScreen = (massage) => {
+const writeToScreen = massage => {
   console.log(massage)
 }
 
@@ -153,7 +153,7 @@ const reconnect = () => {
 }
 
 // 从浏览器地址中获取对应参数
-const GetQueryString = (name) => {
+const GetQueryString = name => {
   let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i')
   // 获取url中 ? 符后的字符串并正则匹配
   let r = window.location.search.substr(1).match(reg)

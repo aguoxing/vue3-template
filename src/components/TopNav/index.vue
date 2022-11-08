@@ -1,11 +1,7 @@
 <template>
   <el-menu :default-active="activeMenu" mode="horizontal" @select="handleSelect">
     <template v-for="(item, index) in topMenus">
-      <el-menu-item
-        :style="{ '--theme': theme }"
-        :index="item.path"
-        :key="index"
-        v-if="index < visibleNumber"
+      <el-menu-item :style="{ '--theme': theme }" :index="item.path" :key="index" v-if="index < visibleNumber"
         ><svg-icon :icon-class="item.meta.icon" /> {{ item.meta.title }}</el-menu-item
       >
     </template>
@@ -50,7 +46,7 @@ const routers = computed(() => permissionStore.topbarRouters)
 // 顶部显示菜单
 const topMenus = computed(() => {
   let topMenus = []
-  routers.value.map((menu) => {
+  routers.value.map(menu => {
     if (menu.hidden !== true) {
       // 兼容顶部栏一级菜单内部跳转
       if (menu.path === '/') {
@@ -66,7 +62,7 @@ const topMenus = computed(() => {
 // 设置子路由
 const childrenMenus = computed(() => {
   let childrenMenus = []
-  routers.value.map((router) => {
+  routers.value.map(router => {
     for (let item in router.children) {
       if (router.children[item].parentPath === undefined) {
         if (router.path === '/') {
@@ -107,7 +103,7 @@ function setVisibleNumber() {
 
 function handleSelect(key, keyPath) {
   currentIndex.value = key
-  const route = routers.value.find((item) => item.path === key)
+  const route = routers.value.find(item => item.path === key)
   if (isHttp(key)) {
     // http(s):// 路径新窗口打开
     window.open(key, '_blank')
@@ -125,7 +121,7 @@ function handleSelect(key, keyPath) {
 function activeRoutes(key) {
   let routes = []
   if (childrenMenus.value && childrenMenus.value.length > 0) {
-    childrenMenus.value.map((item) => {
+    childrenMenus.value.map(item => {
       if (key == item.parentPath || (key == 'index' && '' == item.path)) {
         routes.push(item)
       }

@@ -66,11 +66,7 @@
                   </td>
                   <td class="el-table__cell is-leaf"><div class="cell">网络入口/出口</div></td>
                   <td class="el-table__cell is-leaf">
-                    <div class="cell" v-if="cache.info">
-                      {{ cache.info.instantaneous_input_kbps }}kps/{{
-                        cache.info.instantaneous_output_kbps
-                      }}kps
-                    </div>
+                    <div class="cell" v-if="cache.info">{{ cache.info.instantaneous_input_kbps }}kps/{{ cache.info.instantaneous_output_kbps }}kps</div>
                   </td>
                 </tr>
               </tbody>
@@ -113,7 +109,7 @@ const { proxy } = getCurrentInstance()
 
 function getList() {
   proxy.$modal.loading('正在加载缓存监控数据，请稍候！')
-  getCache().then((response) => {
+  getCache().then(response => {
     proxy.$modal.closeLoading()
     cache.value = response.data
 

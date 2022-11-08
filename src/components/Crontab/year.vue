@@ -27,19 +27,8 @@
     <el-form-item>
       <el-radio :label="5" v-model="radioValue">
         指定
-        <el-select
-          clearable
-          v-model="checkboxList"
-          placeholder="可多选"
-          multiple
-          :multiple-limit="8"
-        >
-          <el-option
-            v-for="item in 9"
-            :key="item"
-            :value="item - 1 + fullYear"
-            :label="item - 1 + fullYear"
-          />
+        <el-select clearable v-model="checkboxList" placeholder="可多选" multiple :multiple-limit="8">
+          <el-option v-for="item in 9" :key="item" :value="item - 1 + fullYear" :label="item - 1 + fullYear" />
         </el-select>
       </el-radio>
     </el-form-item>
@@ -90,7 +79,7 @@ const checkboxString = computed(() => {
 })
 watch(
   () => props.cron.year,
-  (value) => changeRadioValue(value)
+  value => changeRadioValue(value)
 )
 watch([radioValue, cycleTotal, averageTotal, checkboxString], () => onRadioChange())
 function changeRadioValue(value) {
@@ -109,7 +98,7 @@ function changeRadioValue(value) {
     average02.value = Number(indexArr[0])
     radioValue.value = 4
   } else {
-    checkboxList.value = [...new Set(value.split(',').map((item) => Number(item)))]
+    checkboxList.value = [...new Set(value.split(',').map(item => Number(item)))]
     radioValue.value = 5
   }
 }

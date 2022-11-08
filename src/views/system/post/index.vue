@@ -1,36 +1,15 @@
 <template>
   <div class="app-container">
-    <el-form
-      :model="queryParams"
-      ref="queryRef"
-      :inline="true"
-      v-show="showSearch"
-      label-width="68px"
-    >
+    <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="岗位编码" prop="postCode">
-        <el-input
-          v-model="queryParams.postCode"
-          placeholder="请输入岗位编码"
-          clearable
-          @keyup.enter="handleQuery"
-        />
+        <el-input v-model="queryParams.postCode" placeholder="请输入岗位编码" clearable @keyup.enter="handleQuery" />
       </el-form-item>
       <el-form-item label="岗位名称" prop="postName">
-        <el-input
-          v-model="queryParams.postName"
-          placeholder="请输入岗位名称"
-          clearable
-          @keyup.enter="handleQuery"
-        />
+        <el-input v-model="queryParams.postName" placeholder="请输入岗位名称" clearable @keyup.enter="handleQuery" />
       </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="岗位状态" clearable>
-          <el-option
-            v-for="dict in sys_normal_disable"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
+          <el-option v-for="dict in sys_normal_disable" :key="dict.value" :label="dict.label" :value="dict.value" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -41,24 +20,13 @@
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:post:add']"
-          ><ep:plus /> 新增</el-button
-        >
+        <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:post:add']"><ep:plus /> 新增</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPerms="['system:post:remove']"
-          ><ep:delete /> 删除</el-button
-        >
+        <el-button type="danger" plain :disabled="multiple" @click="handleDelete" v-hasPerms="['system:post:remove']"><ep:delete /> 删除</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="warning" plain @click="handleExport" v-hasPerms="['system:post:export']"
-          ><ep:download /> 导出</el-button
-        >
+        <el-button type="warning" plain @click="handleExport" v-hasPerms="['system:post:export']"><ep:download /> 导出</el-button>
       </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
@@ -81,31 +49,13 @@
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
-          <el-button
-            link
-            type="primary"
-            @click="handleUpdate(scope.row)"
-            v-hasPerms="['system:post:edit']"
-            ><ep:edit /> 修改</el-button
-          >
-          <el-button
-            link
-            type="danger"
-            @click="handleDelete(scope.row)"
-            v-hasPerms="['system:post:remove']"
-            ><ep:delete /> 删除</el-button
-          >
+          <el-button link type="primary" @click="handleUpdate(scope.row)" v-hasPerms="['system:post:edit']"><ep:edit /> 修改</el-button>
+          <el-button link type="danger" @click="handleDelete(scope.row)" v-hasPerms="['system:post:remove']"><ep:delete /> 删除</el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <pagination
-      v-show="total > 0"
-      :total="total"
-      v-model:page="queryParams.pageNum"
-      v-model:limit="queryParams.pageSize"
-      @pagination="getList"
-    />
+    <pagination v-show="total > 0" :total="total" v-model:page="queryParams.pageNum" v-model:limit="queryParams.pageSize" @pagination="getList" />
 
     <!-- 添加或修改岗位对话框 -->
     <el-dialog :title="title" v-model="open" width="500px" append-to-body>
@@ -121,9 +71,7 @@
         </el-form-item>
         <el-form-item label="岗位状态" prop="status">
           <el-radio-group v-model="form.status">
-            <el-radio v-for="dict in sys_normal_disable" :key="dict.value" :label="dict.value">{{
-              dict.label
-            }}</el-radio>
+            <el-radio v-for="dict in sys_normal_disable" :key="dict.value" :label="dict.value">{{ dict.label }}</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="备注" prop="remark">
@@ -177,7 +125,7 @@ const { queryParams, form, rules } = toRefs(data)
 /** 查询岗位列表 */
 function getList() {
   loading.value = true
-  listPost(queryParams.value).then((response) => {
+  listPost(queryParams.value).then(response => {
     postList.value = response.data.rows
     total.value = response.data.total
     loading.value = false
@@ -212,7 +160,7 @@ function resetQuery() {
 }
 /** 多选框选中数据 */
 function handleSelectionChange(selection) {
-  ids.value = selection.map((item) => item.postId)
+  ids.value = selection.map(item => item.postId)
   single.value = selection.length != 1
   multiple.value = !selection.length
 }
@@ -226,7 +174,7 @@ function handleAdd() {
 function handleUpdate(row) {
   reset()
   const postId = row.postId || ids.value
-  getPost(postId).then((response) => {
+  getPost(postId).then(response => {
     form.value = response.data
     open.value = true
     title.value = '修改岗位'
@@ -234,16 +182,16 @@ function handleUpdate(row) {
 }
 /** 提交按钮 */
 function submitForm() {
-  proxy.$refs['postRef'].validate((valid) => {
+  proxy.$refs['postRef'].validate(valid => {
     if (valid) {
       if (form.value.postId != undefined) {
-        updatePost(form.value).then((response) => {
+        updatePost(form.value).then(response => {
           proxy.$modal.msgSuccess('修改成功')
           open.value = false
           getList()
         })
       } else {
-        addPost(form.value).then((response) => {
+        addPost(form.value).then(response => {
           proxy.$modal.msgSuccess('新增成功')
           open.value = false
           getList()

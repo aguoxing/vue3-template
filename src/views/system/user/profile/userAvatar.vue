@@ -2,14 +2,7 @@
   <div class="user-info-head" @click="editCropper()">
     <img :src="options.img" title="点击上传头像" class="img-circle img-lg" />
   </div>
-  <el-dialog
-    :title="title"
-    v-model="open"
-    width="800px"
-    append-to-body
-    @opened="modalOpened"
-    @close="closeDialog"
-  >
+  <el-dialog :title="title" v-model="open" width="800px" append-to-body @opened="modalOpened" @close="closeDialog">
     <el-row>
       <el-col :xs="24" :md="12" :style="{ height: '350px' }">
         <vue-cropper
@@ -34,12 +27,7 @@
     <br />
     <el-row>
       <el-col :lg="2" :md="2">
-        <el-upload
-          action="#"
-          :http-request="requestUpload"
-          :show-file-list="false"
-          :before-upload="beforeUpload"
-        >
+        <el-upload action="#" :http-request="requestUpload" :show-file-list="false" :before-upload="beforeUpload">
           <el-button>
             选择
             <el-icon class="el-icon--right"><Upload /></el-icon>
@@ -126,10 +114,10 @@ function beforeUpload(file) {
 }
 /** 上传图片 */
 function uploadImg() {
-  proxy.$refs.cropper.getCropBlob((data) => {
+  proxy.$refs.cropper.getCropBlob(data => {
     let formData = new FormData()
     formData.append('avatarfile', data)
-    uploadAvatar(formData).then((response) => {
+    uploadAvatar(formData).then(response => {
       open.value = false
       options.img = import.meta.env.VITE_APP_BASE_API + response.imgUrl
       userStore.avatar = options.img

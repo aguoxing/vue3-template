@@ -13,17 +13,10 @@ import '@/assets/styles/index.scss'
 import plugins from './plugins' // plugins
 
 import { useDict } from '@/utils/dict'
-import {
-  parseTime,
-  resetForm,
-  addDateRange,
-  handleTree,
-  selectDictLabel,
-  selectDictLabels
-} from '@/utils/ruoyi'
+import { parseTime, resetForm, addDateRange, handleTree, selectDictLabel, selectDictLabels } from '@/utils/ruoyi'
 
 // 国际化
-import i18n from './lang/index'
+import i18n from './i18n/index'
 
 import directive from './directive' // directive
 

@@ -7,23 +7,13 @@
       <el-tab-pane label="字段信息" name="columnInfo">
         <el-table ref="dragTable" :data="columns" row-key="columnId" :max-height="tableHeight">
           <el-table-column label="序号" type="index" min-width="5%" />
-          <el-table-column
-            label="字段列名"
-            prop="columnName"
-            min-width="10%"
-            :show-overflow-tooltip="true"
-          />
+          <el-table-column label="字段列名" prop="columnName" min-width="10%" :show-overflow-tooltip="true" />
           <el-table-column label="字段描述" min-width="10%">
             <template #default="scope">
               <el-input v-model="scope.row.columnComment"></el-input>
             </template>
           </el-table-column>
-          <el-table-column
-            label="物理类型"
-            prop="columnType"
-            min-width="10%"
-            :show-overflow-tooltip="true"
-          />
+          <el-table-column label="物理类型" prop="columnType" min-width="10%" :show-overflow-tooltip="true" />
           <el-table-column label="Java类型" min-width="11%">
             <template #default="scope">
               <el-select v-model="scope.row.javaType">
@@ -45,11 +35,7 @@
 
           <el-table-column label="插入" min-width="5%">
             <template #default="scope">
-              <el-checkbox
-                true-label="1"
-                false-label="0"
-                v-model="scope.row.isInsert"
-              ></el-checkbox>
+              <el-checkbox true-label="1" false-label="0" v-model="scope.row.isInsert"></el-checkbox>
             </template>
           </el-table-column>
           <el-table-column label="编辑" min-width="5%">
@@ -83,11 +69,7 @@
           </el-table-column>
           <el-table-column label="必填" min-width="5%">
             <template #default="scope">
-              <el-checkbox
-                true-label="1"
-                false-label="0"
-                v-model="scope.row.isRequired"
-              ></el-checkbox>
+              <el-checkbox true-label="1" false-label="0" v-model="scope.row.isRequired"></el-checkbox>
             </template>
           </el-table-column>
           <el-table-column label="显示类型" min-width="12%">
@@ -108,16 +90,9 @@
           <el-table-column label="字典类型" min-width="12%">
             <template #default="scope">
               <el-select v-model="scope.row.dictType" clearable filterable placeholder="请选择">
-                <el-option
-                  v-for="dict in dictOptions"
-                  :key="dict.dictType"
-                  :label="dict.dictName"
-                  :value="dict.dictType"
-                >
+                <el-option v-for="dict in dictOptions" :key="dict.dictType" :label="dict.dictName" :value="dict.dictType">
                   <span style="float: left">{{ dict.dictName }}</span>
-                  <span style="float: right; color: #8492a6; font-size: 13px">{{
-                    dict.dictType
-                  }}</span>
+                  <span style="float: right; color: #8492a6; font-size: 13px">{{ dict.dictType }}</span>
                 </el-option>
               </el-select>
             </template>
@@ -157,8 +132,8 @@ const info = ref({})
 function submitForm() {
   const basicForm = proxy.$refs.basicInfo.$refs.basicInfoForm
   const genForm = proxy.$refs.genInfo.$refs.genInfoForm
-  Promise.all([basicForm, genForm].map(getFormPromise)).then((res) => {
-    const validateResult = res.every((item) => !!item)
+  Promise.all([basicForm, genForm].map(getFormPromise)).then(res => {
+    const validateResult = res.every(item => !!item)
     if (validateResult) {
       const genTable = Object.assign({}, info.value)
       genTable.columns = columns.value
@@ -168,7 +143,7 @@ function submitForm() {
         treeParentCode: info.value.treeParentCode,
         parentMenuId: info.value.parentMenuId
       }
-      updateGenTable(genTable).then((res) => {
+      updateGenTable(genTable).then(res => {
         proxy.$modal.msgSuccess(res.msg)
         if (res.code === 200) {
           close()
@@ -180,8 +155,8 @@ function submitForm() {
   })
 }
 function getFormPromise(form) {
-  return new Promise((resolve) => {
-    form.validate((res) => {
+  return new Promise(resolve => {
+    form.validate(res => {
       resolve(res)
     })
   })
@@ -195,13 +170,13 @@ function close() {
   const tableId = route.params && route.params.tableId
   if (tableId) {
     // 获取表详细信息
-    getGenTable(tableId).then((res) => {
+    getGenTable(tableId).then(res => {
       columns.value = res.data.rows
       info.value = res.data.info
       tables.value = res.data.tables
     })
     /** 查询字典下拉列表 */
-    getDictOptionselect().then((response) => {
+    getDictOptionselect().then(response => {
       dictOptions.value = response.data
     })
   }

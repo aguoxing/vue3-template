@@ -86,22 +86,10 @@
                 <tr>
                   <td class="el-table__cell is-leaf"><div class="cell">使用率</div></td>
                   <td class="el-table__cell is-leaf">
-                    <div
-                      class="cell"
-                      v-if="server.mem"
-                      :class="{ 'text-danger': server.mem.usage > 80 }"
-                    >
-                      {{ server.mem.usage }}%
-                    </div>
+                    <div class="cell" v-if="server.mem" :class="{ 'text-danger': server.mem.usage > 80 }">{{ server.mem.usage }}%</div>
                   </td>
                   <td class="el-table__cell is-leaf">
-                    <div
-                      class="cell"
-                      v-if="server.jvm"
-                      :class="{ 'text-danger': server.jvm.usage > 80 }"
-                    >
-                      {{ server.jvm.usage }}%
-                    </div>
+                    <div class="cell" v-if="server.jvm" :class="{ 'text-danger': server.jvm.usage > 80 }">{{ server.jvm.usage }}%</div>
                   </td>
                 </tr>
               </tbody>
@@ -237,9 +225,7 @@
                     <div class="cell">{{ sysFile.used }}</div>
                   </td>
                   <td class="el-table__cell is-leaf">
-                    <div class="cell" :class="{ 'text-danger': sysFile.usage > 80 }">
-                      {{ sysFile.usage }}%
-                    </div>
+                    <div class="cell" :class="{ 'text-danger': sysFile.usage > 80 }">{{ sysFile.usage }}%</div>
                   </td>
                 </tr>
               </tbody>
@@ -259,7 +245,7 @@ const { proxy } = getCurrentInstance()
 
 function getList() {
   proxy.$modal.loading('正在加载服务监控数据，请稍候！')
-  getServer().then((response) => {
+  getServer().then(response => {
     server.value = response.data
     proxy.$modal.closeLoading()
   })

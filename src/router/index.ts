@@ -161,7 +161,7 @@ const router = createRouter({
 // 重置路由
 export function resetRouter() {
   const { permission } = useStore()
-  permission.routes.forEach((route) => {
+  permission.routes.forEach(route => {
     const name = route.name
     if (name && router.hasRoute(name)) {
       router.removeRoute(name)

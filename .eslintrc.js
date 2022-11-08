@@ -10,12 +10,7 @@ module.exports = {
     defineExpose: 'readonly'
   },
   parser: 'vue-eslint-parser',
-  extends: [
-    'eslint:recommended',
-    'plugin:vue/vue3-essential',
-    'plugin:@typescript-eslint/recommended',
-    '.eslintrc-auto-import.json'
-  ],
+  extends: ['eslint:recommended', 'plugin:vue/vue3-essential', 'plugin:@typescript-eslint/recommended', '.eslintrc-auto-import.json'],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',

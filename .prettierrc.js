@@ -1,6 +1,6 @@
 module.exports = {
   // 指定代码换行的行长度。单行代码宽度超过指定的最大宽度，将会换行，如果都不想换，可以添加 "proseWrap": "never"
-  printWidth: 120,
+  printWidth: 160,
   // 指定每个缩进级别的空格数
   tabWidth: 2,
   // 使用制表符而不是空格缩进行

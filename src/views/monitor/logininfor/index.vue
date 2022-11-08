@@ -1,43 +1,15 @@
 <template>
   <div class="app-container">
-    <el-form
-      :model="queryParams"
-      ref="queryRef"
-      :inline="true"
-      v-show="showSearch"
-      label-width="68px"
-    >
+    <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="登录地址" prop="ipaddr">
-        <el-input
-          v-model="queryParams.ipaddr"
-          placeholder="请输入登录地址"
-          clearable
-          style="width: 240px"
-          @keyup.enter="handleQuery"
-        />
+        <el-input v-model="queryParams.ipaddr" placeholder="请输入登录地址" clearable style="width: 240px" @keyup.enter="handleQuery" />
       </el-form-item>
       <el-form-item label="用户名称" prop="userName">
-        <el-input
-          v-model="queryParams.userName"
-          placeholder="请输入用户名称"
-          clearable
-          style="width: 240px"
-          @keyup.enter="handleQuery"
-        />
+        <el-input v-model="queryParams.userName" placeholder="请输入用户名称" clearable style="width: 240px" @keyup.enter="handleQuery" />
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-select
-          v-model="queryParams.status"
-          placeholder="登录状态"
-          clearable
-          style="width: 240px"
-        >
-          <el-option
-            v-for="dict in sys_common_status"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
+        <el-select v-model="queryParams.status" placeholder="登录状态" clearable style="width: 240px">
+          <el-option v-for="dict in sys_common_status" :key="dict.value" :label="dict.label" :value="dict.value" />
         </el-select>
       </el-form-item>
       <el-form-item label="登录时间" style="width: 308px">
@@ -58,46 +30,16 @@
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="Delete"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['monitor:logininfor:remove']"
-          >删除</el-button
-        >
+        <el-button type="danger" plain icon="Delete" :disabled="multiple" @click="handleDelete" v-hasPermi="['monitor:logininfor:remove']">删除</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="Delete"
-          @click="handleClean"
-          v-hasPermi="['monitor:logininfor:remove']"
-          >清空</el-button
-        >
+        <el-button type="danger" plain icon="Delete" @click="handleClean" v-hasPermi="['monitor:logininfor:remove']">清空</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="Unlock"
-          :disabled="single"
-          @click="handleUnlock"
-          v-hasPermi="['monitor:logininfor:unlock']"
-          >解锁</el-button
-        >
+        <el-button type="primary" plain icon="Unlock" :disabled="single" @click="handleUnlock" v-hasPermi="['monitor:logininfor:unlock']">解锁</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          icon="Download"
-          @click="handleExport"
-          v-hasPermi="['monitor:logininfor:export']"
-          >导出</el-button
-        >
+        <el-button type="warning" plain icon="Download" @click="handleExport" v-hasPermi="['monitor:logininfor:export']">导出</el-button>
       </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
@@ -121,12 +63,7 @@
         :sort-orders="['descending', 'ascending']"
       />
       <el-table-column label="地址" align="center" prop="ipaddr" :show-overflow-tooltip="true" />
-      <el-table-column
-        label="登录地点"
-        align="center"
-        prop="loginLocation"
-        :show-overflow-tooltip="true"
-      />
+      <el-table-column label="登录地点" align="center" prop="loginLocation" :show-overflow-tooltip="true" />
       <el-table-column label="操作系统" align="center" prop="os" :show-overflow-tooltip="true" />
       <el-table-column label="浏览器" align="center" prop="browser" :show-overflow-tooltip="true" />
       <el-table-column label="登录状态" align="center" prop="status">
@@ -135,27 +72,14 @@
         </template>
       </el-table-column>
       <el-table-column label="描述" align="center" prop="msg" />
-      <el-table-column
-        label="访问时间"
-        align="center"
-        prop="loginTime"
-        sortable="custom"
-        :sort-orders="['descending', 'ascending']"
-        width="180"
-      >
+      <el-table-column label="访问时间" align="center" prop="loginTime" sortable="custom" :sort-orders="['descending', 'ascending']" width="180">
         <template #default="scope">
           <span>{{ parseTime(scope.row.loginTime) }}</span>
         </template>
       </el-table-column>
     </el-table>
 
-    <pagination
-      v-show="total > 0"
-      :total="total"
-      v-model:page="queryParams.pageNum"
-      v-model:limit="queryParams.pageSize"
-      @pagination="getList"
-    />
+    <pagination v-show="total > 0" :total="total" v-model:page="queryParams.pageNum" v-model:limit="queryParams.pageSize" @pagination="getList" />
   </div>
 </template>
 
@@ -190,7 +114,7 @@ const queryParams = ref({
 /** 查询登录日志列表 */
 function getList() {
   loading.value = true
-  list(proxy.addDateRange(queryParams.value, dateRange.value)).then((response) => {
+  list(proxy.addDateRange(queryParams.value, dateRange.value)).then(response => {
     logininforList.value = response.rows
     total.value = response.total
     loading.value = false
@@ -210,10 +134,10 @@ function resetQuery() {
 }
 /** 多选框选中数据 */
 function handleSelectionChange(selection) {
-  ids.value = selection.map((item) => item.infoId)
+  ids.value = selection.map(item => item.infoId)
   multiple.value = !selection.length
   single.value = selection.length != 1
-  selectName.value = selection.map((item) => item.userName)
+  selectName.value = selection.map(item => item.userName)
 }
 /** 排序触发事件 */
 function handleSortChange(column, prop, order) {

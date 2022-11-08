@@ -25,13 +25,13 @@ const useUserStore = defineStore({
       const uuid = userInfo.uuid
       return new Promise((resolve, reject) => {
         login({ username, password, code, uuid })
-          .then((res) => {
+          .then(res => {
             const accessToken = res.msg
             setToken(accessToken)
             this.token = accessToken
             resolve(accessToken)
           })
-          .catch((error) => {
+          .catch(error => {
             reject(error)
           })
       })
@@ -40,13 +40,10 @@ const useUserStore = defineStore({
     getUserInfo() {
       return new Promise((resolve, reject) => {
         getUserInfo()
-          .then((r) => {
+          .then(r => {
             const res = r.data
             const user = res.user
-            const avatar =
-              user.avatar == '' || user.avatar == null
-                ? defAva
-                : import.meta.env.VITE_APP_BASE_API + user.avatar
+            const avatar = user.avatar == '' || user.avatar == null ? defAva : import.meta.env.VITE_APP_BASE_API + user.avatar
 
             if (res.roles && res.roles.length > 0) {
               // 验证返回的roles是否是一个非空数组
@@ -59,7 +56,7 @@ const useUserStore = defineStore({
             this.avatar = avatar
             resolve(res)
           })
-          .catch((error) => {
+          .catch(error => {
             reject(error)
           })
       })
@@ -75,7 +72,7 @@ const useUserStore = defineStore({
             removeToken()
             resolve(null)
           })
-          .catch((error) => {
+          .catch(error => {
             reject(error)
           })
       })
@@ -83,7 +80,7 @@ const useUserStore = defineStore({
 
     // 清除 Token
     resetToken() {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         removeToken()
         this.RESET_STATE()
         resolve(null)

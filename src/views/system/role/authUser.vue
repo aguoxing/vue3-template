@@ -2,22 +2,10 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryRef" v-show="showSearch" :inline="true">
       <el-form-item label="用户名称" prop="userName">
-        <el-input
-          v-model="queryParams.userName"
-          placeholder="请输入用户名称"
-          clearable
-          style="width: 240px"
-          @keyup.enter="handleQuery"
-        />
+        <el-input v-model="queryParams.userName" placeholder="请输入用户名称" clearable style="width: 240px" @keyup.enter="handleQuery" />
       </el-form-item>
       <el-form-item label="手机号码" prop="phonenumber">
-        <el-input
-          v-model="queryParams.phonenumber"
-          placeholder="请输入手机号码"
-          clearable
-          style="width: 240px"
-          @keyup.enter="handleQuery"
-        />
+        <el-input v-model="queryParams.phonenumber" placeholder="请输入手机号码" clearable style="width: 240px" @keyup.enter="handleQuery" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
@@ -27,23 +15,10 @@
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="Plus"
-          @click="openSelectUser"
-          v-hasPerms="['system:role:add']"
-          >添加用户</el-button
-        >
+        <el-button type="primary" plain icon="Plus" @click="openSelectUser" v-hasPerms="['system:role:add']">添加用户</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="CircleClose"
-          :disabled="multiple"
-          @click="cancelAuthUserAll"
-          v-hasPerms="['system:role:remove']"
+        <el-button type="danger" plain icon="CircleClose" :disabled="multiple" @click="cancelAuthUserAll" v-hasPerms="['system:role:remove']"
           >批量取消授权</el-button
         >
       </el-col>
@@ -71,24 +46,12 @@
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
-          <el-button
-            type="text"
-            icon="CircleClose"
-            @click="cancelAuthUser(scope.row)"
-            v-hasPerms="['system:role:remove']"
-            >取消授权</el-button
-          >
+          <el-button type="text" icon="CircleClose" @click="cancelAuthUser(scope.row)" v-hasPerms="['system:role:remove']">取消授权</el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <pagination
-      v-show="total > 0"
-      :total="total"
-      v-model:page="queryParams.pageNum"
-      v-model:limit="queryParams.pageSize"
-      @pagination="getList"
-    />
+    <pagination v-show="total > 0" :total="total" v-model:page="queryParams.pageNum" v-model:limit="queryParams.pageSize" @pagination="getList" />
     <select-user ref="selectRef" :roleId="queryParams.roleId" @ok="handleQuery" />
   </div>
 </template>
@@ -119,7 +82,7 @@ const queryParams = reactive({
 /** 查询授权用户列表 */
 function getList() {
   loading.value = true
-  allocatedUserList(queryParams).then((response) => {
+  allocatedUserList(queryParams).then(response => {
     userList.value = response.rows
     total.value = response.total
     loading.value = false
@@ -142,7 +105,7 @@ function resetQuery() {
 }
 // 多选框选中数据
 function handleSelectionChange(selection) {
-  userIds.value = selection.map((item) => item.userId)
+  userIds.value = selection.map(item => item.userId)
   multiple.value = !selection.length
 }
 /** 打开授权用户表弹窗 */
