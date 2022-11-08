@@ -69,22 +69,14 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="handleQuery">
-              <ep:search /> 搜索
-            </el-button>
-            <el-button @click="resetQuery">
-              <ep:refresh /> 重置
-            </el-button>
+            <el-button type="primary" @click="handleQuery"> <ep:search /> 搜索 </el-button>
+            <el-button @click="resetQuery"> <ep:refresh /> 重置 </el-button>
           </el-form-item>
         </el-form>
 
         <el-row :gutter="10" class="mb8">
           <el-col :span="1.5">
-            <el-button
-              type="primary"
-              plain
-              @click="handleAdd"
-              v-hasPerms="['system:user:add']"
+            <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:user:add']"
               ><ep:plus /> 新增</el-button
             >
           </el-col>
@@ -99,11 +91,7 @@
             >
           </el-col>
           <el-col :span="1.5">
-            <el-button
-              type="info"
-              plain
-              @click="handleImport"
-              v-hasPerms="['system:user:import']"
+            <el-button type="info" plain @click="handleImport" v-hasPerms="['system:user:import']"
               ><ep:download />导入</el-button
             >
           </el-col>
@@ -123,7 +111,12 @@
           ></right-toolbar>
         </el-row>
 
-        <el-table border v-loading="loading" :data="userList" @selection-change="handleSelectionChange">
+        <el-table
+          border
+          v-loading="loading"
+          :data="userList"
+          @selection-change="handleSelectionChange"
+        >
           <el-table-column type="selection" width="50" align="center" />
           <el-table-column
             label="用户编号"
@@ -198,7 +191,8 @@
                   type="primary"
                   @click="handleUpdate(scope.row)"
                   v-hasPerms="['system:user:edit']"
-                ><ep:edit /></el-button>
+                  ><ep:edit
+                /></el-button>
               </el-tooltip>
               <el-tooltip content="重置密码" placement="top" v-if="scope.row.userId !== 1">
                 <el-button
@@ -206,7 +200,8 @@
                   type="primary"
                   @click="handleResetPwd(scope.row)"
                   v-hasPerms="['system:user:resetPwd']"
-                ><ep:key /></el-button>
+                  ><ep:key
+                /></el-button>
               </el-tooltip>
               <el-tooltip content="分配角色" placement="top" v-if="scope.row.userId !== 1">
                 <el-button
@@ -214,7 +209,8 @@
                   type="primary"
                   @click="handleAuthRole(scope.row)"
                   v-hasPerms="['system:user:edit']"
-                ><ep:circle-check /></el-button>
+                  ><ep:circle-check
+                /></el-button>
               </el-tooltip>
               <el-tooltip content="删除" placement="top" v-if="scope.row.userId !== 1">
                 <el-button
@@ -222,7 +218,8 @@
                   type="danger"
                   @click="handleDelete(scope.row)"
                   v-hasPerms="['system:user:remove']"
-                ><ep:delete /></el-button>
+                  ><ep:delete
+                /></el-button>
               </el-tooltip>
             </template>
           </el-table-column>

@@ -189,10 +189,10 @@ export function handleTree(data, id, parentId, children) {
 
 // 转换字符串，undefined,null等转化为""
 export function parseStrEmpty(str) {
-  if (!str || str == "undefined" || str == "null") {
-    return "";
+  if (!str || str == 'undefined' || str == 'null') {
+    return ''
   }
-  return str;
+  return str
 }
 
 /**

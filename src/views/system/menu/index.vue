@@ -20,27 +20,19 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="handleQuery">
-          <ep:search /> 搜索
-        </el-button>
-        <el-button @click="resetQuery">
-          <ep:refresh /> 重置
-        </el-button>
+        <el-button type="primary" @click="handleQuery"> <ep:search /> 搜索 </el-button>
+        <el-button @click="resetQuery"> <ep:refresh /> 重置 </el-button>
       </el-form-item>
     </el-form>
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          @click="handleAdd"
-          v-hasPerms="['system:menu:add']"
-          ><ep:plus/>新增</el-button
+        <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:menu:add']"
+          ><ep:plus />新增</el-button
         >
       </el-col>
       <el-col :span="1.5">
-        <el-button type="info" plain @click="toggleExpandAll"><ep:sort/>展开/折叠</el-button>
+        <el-button type="info" plain @click="toggleExpandAll"><ep:sort />展开/折叠</el-button>
       </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
@@ -98,21 +90,21 @@
             type="primary"
             @click="handleUpdate(scope.row)"
             v-hasPerms="['system:menu:edit']"
-            ><ep:edit/>修改</el-button
+            ><ep:edit />修改</el-button
           >
           <el-button
             link
             type="primary"
             @click="handleAdd(scope.row)"
             v-hasPerms="['system:menu:add']"
-            ><ep:plus/>新增</el-button
+            ><ep:plus />新增</el-button
           >
           <el-button
             link
             type="danger"
             @click="handleDelete(scope.row)"
             v-hasPerms="['system:menu:remove']"
-            ><ep:delete/>删除</el-button
+            ><ep:delete />删除</el-button
           >
         </template>
       </el-table-column>

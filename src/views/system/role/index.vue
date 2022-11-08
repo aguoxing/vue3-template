@@ -35,21 +35,13 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="handleQuery">
-          <ep:search /> 搜索
-        </el-button>
-        <el-button @click="resetQuery">
-          <ep:refresh /> 重置
-        </el-button>
+        <el-button type="primary" @click="handleQuery"> <ep:search /> 搜索 </el-button>
+        <el-button @click="resetQuery"> <ep:refresh /> 重置 </el-button>
       </el-form-item>
     </el-form>
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          @click="handleAdd"
-          v-hasPerms="['system:role:add']"
+        <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:role:add']"
           >新增</el-button
         >
       </el-col>
@@ -64,11 +56,7 @@
         >
       </el-col>
       <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          @click="handleExport"
-          v-hasPerms="['system:role:export']"
+        <el-button type="warning" plain @click="handleExport" v-hasPerms="['system:role:export']"
           ><ep:download /> 导出</el-button
         >
       </el-col>
@@ -105,7 +93,8 @@
               type="primary"
               @click="handleUpdate(scope.row)"
               v-hasPerms="['system:role:edit']"
-            ><ep:edit /></el-button>
+              ><ep:edit
+            /></el-button>
           </el-tooltip>
           <el-tooltip content="数据权限" placement="top" v-if="scope.row.roleId !== 1">
             <el-button
@@ -113,7 +102,8 @@
               type="primary"
               @click="handleDataScope(scope.row)"
               v-hasPerms="['system:role:edit']"
-            ><ep:circle-check/></el-button>
+              ><ep:circle-check
+            /></el-button>
           </el-tooltip>
           <el-tooltip content="分配用户" placement="top" v-if="scope.row.roleId !== 1">
             <el-button
@@ -121,7 +111,8 @@
               type="primary"
               @click="handleAuthUser(scope.row)"
               v-hasPerms="['system:role:edit']"
-            ><ep:user /></el-button>
+              ><ep:user
+            /></el-button>
           </el-tooltip>
           <el-tooltip content="删除" placement="top" v-if="scope.row.roleId !== 1">
             <el-button
@@ -129,7 +120,8 @@
               type="danger"
               @click="handleDelete(scope.row)"
               v-hasPerms="['system:role:remove']"
-            ><ep:delete /></el-button>
+              ><ep:delete
+            /></el-button>
           </el-tooltip>
         </template>
       </el-table-column>

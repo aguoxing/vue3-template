@@ -51,23 +51,15 @@
         ></el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="handleQuery">
-          <ep:search />搜索
-        </el-button>
-        <el-button @click="resetQuery">
-          <ep:refresh />重置
-        </el-button>
+        <el-button type="primary" @click="handleQuery"> <ep:search />搜索 </el-button>
+        <el-button @click="resetQuery"> <ep:refresh />重置 </el-button>
       </el-form-item>
     </el-form>
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          @click="handleAdd"
-          v-hasPerms="['system:dict:add']"
-          ><ep:plus/>新增</el-button
+        <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:dict:add']"
+          ><ep:plus />新增</el-button
         >
       </el-col>
       <el-col :span="1.5">
@@ -77,16 +69,12 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPerms="['system:dict:remove']"
-          ><ep:delete/>删除</el-button
+          ><ep:delete />删除</el-button
         >
       </el-col>
       <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          @click="handleExport"
-          v-hasPerms="['system:dict:export']"
-          ><ep:download/>导出</el-button
+        <el-button type="warning" plain @click="handleExport" v-hasPerms="['system:dict:export']"
+          ><ep:download />导出</el-button
         >
       </el-col>
       <el-col :span="1.5">
@@ -95,7 +83,7 @@
           plain
           @click="handleRefreshCache"
           v-hasPerms="['system:dict:remove']"
-          ><ep:refresh/>刷新缓存</el-button
+          ><ep:refresh />刷新缓存</el-button
         >
       </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
@@ -135,14 +123,14 @@
             type="primary"
             @click="handleUpdate(scope.row)"
             v-hasPerms="['system:dict:edit']"
-            ><ep:edit/>修改</el-button
+            ><ep:edit />修改</el-button
           >
           <el-button
             link
             type="danger"
             @click="handleDelete(scope.row)"
             v-hasPerms="['system:dict:remove']"
-            ><ep:delete/>删除</el-button
+            ><ep:delete />删除</el-button
           >
         </template>
       </el-table-column>

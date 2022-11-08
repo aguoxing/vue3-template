@@ -105,12 +105,8 @@
 
     <el-divider />
 
-    <el-button type="primary" plain @click="saveSetting">
-      <ep:document /> 保存配置
-    </el-button>
-    <el-button plain @click="resetSetting">
-      <ep:refresh /> 重置配置
-    </el-button>
+    <el-button type="primary" plain @click="saveSetting"> <ep:document /> 保存配置 </el-button>
+    <el-button plain @click="resetSetting"> <ep:refresh /> 重置配置 </el-button>
   </el-drawer>
 </template>
 
@@ -121,7 +117,7 @@ import { useDynamicTitle } from '@/utils/dynamicTitle'
 import { handleThemeStyle } from '@/utils/theme'
 
 import useStore from '@/store'
-import { useDark,useToggle } from '@vueuse/core'
+import { useDark, useToggle } from '@vueuse/core'
 const { app, setting, permission } = useStore()
 
 const isDark = useDark()

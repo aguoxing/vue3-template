@@ -36,12 +36,8 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="handleQuery">
-          <ep:search /> 搜索
-        </el-button>
-        <el-button @click="resetQuery">
-          <ep:refresh /> 重置
-        </el-button>
+        <el-button type="primary" @click="handleQuery"> <ep:search /> 搜索 </el-button>
+        <el-button @click="resetQuery"> <ep:refresh /> 重置 </el-button>
       </el-form-item>
     </el-form>
 
@@ -58,7 +54,8 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPerms="['system:config:remove']"
-          ><ep:delete /> 删除</el-button>
+          ><ep:delete /> 删除</el-button
+        >
       </el-col>
       <el-col :span="1.5">
         <el-button type="warning" plain @click="handleExport" v-hasPerms="['system:config:export']">
@@ -121,14 +118,15 @@
             type="primary"
             @click="handleUpdate(scope.row)"
             v-hasPerms="['system:config:edit']"
-            >
+          >
             <ep:edit /> 修改
           </el-button>
           <el-button
             link
             type="danger"
             @click="handleDelete(scope.row)"
-            v-hasPerms="['system:config:remove']">
+            v-hasPerms="['system:config:remove']"
+          >
             <ep:delete /> 删除
           </el-button>
         </template>
@@ -299,7 +297,7 @@ function submitForm() {
 }
 /** 删除按钮操作 */
 function handleDelete(row: { [key: string]: any }) {
-  let configIds = [];
+  let configIds = []
   if (row.configId !== undefined) {
     configIds.push(row.configId)
   } else {
@@ -308,7 +306,7 @@ function handleDelete(row: { [key: string]: any }) {
   proxy.$modal
     .confirm('是否确认删除参数编号为"' + configIds + '"的数据项？')
     .then(() => {
-      return delConfig({ids: configIds})
+      return delConfig({ ids: configIds })
     })
     .then(() => {
       getList()

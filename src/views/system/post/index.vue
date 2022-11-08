@@ -34,22 +34,14 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="handleQuery">
-          <ep:search /> 搜索
-        </el-button>
-        <el-button @click="resetQuery">
-          <ep:refresh /> 重置
-        </el-button>
+        <el-button type="primary" @click="handleQuery"> <ep:search /> 搜索 </el-button>
+        <el-button @click="resetQuery"> <ep:refresh /> 重置 </el-button>
       </el-form-item>
     </el-form>
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          @click="handleAdd"
-          v-hasPerms="['system:post:add']"
+        <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:post:add']"
           ><ep:plus /> 新增</el-button
         >
       </el-col>
@@ -64,11 +56,7 @@
         >
       </el-col>
       <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          @click="handleExport"
-          v-hasPerms="['system:post:export']"
+        <el-button type="warning" plain @click="handleExport" v-hasPerms="['system:post:export']"
           ><ep:download /> 导出</el-button
         >
       </el-col>
@@ -266,7 +254,7 @@ function submitForm() {
 }
 /** 删除按钮操作 */
 function handleDelete(row) {
-  let postIds = [];
+  let postIds = []
   if (row.configId !== undefined) {
     postIds.push(row.postId)
   } else {
@@ -275,7 +263,7 @@ function handleDelete(row) {
   proxy.$modal
     .confirm('是否确认删除岗位编号为"' + postIds + '"的数据项？')
     .then(function () {
-      return delPost({ids: postIds})
+      return delPost({ ids: postIds })
     })
     .then(() => {
       getList()

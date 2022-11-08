@@ -34,22 +34,14 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="handleQuery">
-          <ep:search /> 搜索
-        </el-button>
-        <el-button @click="resetQuery">
-          <ep:refresh /> 重置
-        </el-button>
+        <el-button type="primary" @click="handleQuery"> <ep:search /> 搜索 </el-button>
+        <el-button @click="resetQuery"> <ep:refresh /> 重置 </el-button>
       </el-form-item>
     </el-form>
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          @click="handleAdd"
-          v-hasPerms="['system:notice:add']"
+        <el-button type="primary" plain @click="handleAdd" v-hasPerms="['system:notice:add']"
           ><ep:plus /> 新增</el-button
         >
       </el-col>
@@ -66,7 +58,12 @@
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table border v-loading="loading" :data="noticeList" @selection-change="handleSelectionChange">
+    <el-table
+      border
+      v-loading="loading"
+      :data="noticeList"
+      @selection-change="handleSelectionChange"
+    >
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="序号" align="center" prop="noticeId" width="100" />
       <el-table-column
@@ -98,7 +95,7 @@
             type="primary"
             @click="handleUpdate(scope.row)"
             v-hasPerms="['system:notice:edit']"
-            ><ep:edit/>修改</el-button
+            ><ep:edit />修改</el-button
           >
           <el-button
             link
