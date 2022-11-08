@@ -6,7 +6,10 @@
       @click="handleClickOutside"
     />
     <sidebar v-if="!sidebarObj.hide" class="sidebar-container" />
-    <div :class="{ hasTagsView: needTagsView, sidebarHide: sidebarObj.hide }" class="main-container">
+    <div
+      :class="{ hasTagsView: needTagsView, sidebarHide: sidebarObj.hide }"
+      class="main-container"
+    >
       <div :class="{ 'fixed-header': fixedHeader }">
         <navbar @setLayout="setLayout" />
         <tags-view v-if="needTagsView" />
@@ -19,7 +22,7 @@
 
 <script lang="ts" setup>
 import useStore from '@/store'
-const {app,setting} = useStore()
+const { app, setting } = useStore()
 
 const theme = computed(() => setting.theme)
 const sideTheme = computed(() => setting.sideTheme)

@@ -1,11 +1,22 @@
 import request from '@/utils/request'
 
+const server_name = '/system/dept'
+
 // 查询部门列表
-export function listDept(query) {
+export function listDept(data) {
   return request({
-    url: '/system/dept/list',
-    method: 'get',
-    params: query
+    url: `${server_name}/list`,
+    method: 'post',
+    data: data
+  })
+}
+
+// 查询部门列表
+export function listDeptTree(data) {
+  return request({
+    url: `${server_name}/tree`,
+    method: 'post',
+    params: data
   })
 }
 

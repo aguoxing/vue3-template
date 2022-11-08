@@ -35,7 +35,7 @@
 import variables from '@/assets/styles/variables.module.scss'
 import useStore from '@/store'
 
-const {app,permission,setting} = useStore()
+const { app, permission, setting } = useStore()
 const route = useRoute()
 
 const sidebarRouters = computed(() => permission.sidebarRouters)

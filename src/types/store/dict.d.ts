@@ -2,7 +2,7 @@
  * 字典
  */
 interface kv {
-  value: string,
+  value: string
   key: string
 }
 

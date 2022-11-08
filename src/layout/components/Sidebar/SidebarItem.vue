@@ -90,7 +90,7 @@ function hasOneShowingChild(children = [], parent) {
   return false
 }
 
-function resolvePath(routePath:string, routeQuery:string) {
+function resolvePath(routePath: string, routeQuery: string) {
   if (isExternal(routePath)) {
     return routePath
   }
@@ -104,7 +104,7 @@ function resolvePath(routePath:string, routeQuery:string) {
   return getNormalPath(props.basePath + '/' + routePath)
 }
 
-function hasTitle(title:string) {
+function hasTitle(title: string) {
   if (title !== undefined && title.length > 5) {
     return title
   } else {

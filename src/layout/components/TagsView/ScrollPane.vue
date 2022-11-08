@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import useStore from '@/store'
-const {tagsView} = useStore()
+const { tagsView } = useStore()
 
 const tagAndTagSpacing = ref(4)
 const { proxy } = getCurrentInstance()

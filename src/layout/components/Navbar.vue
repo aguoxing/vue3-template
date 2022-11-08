@@ -6,11 +6,7 @@
       class="hamburger-container"
       @toggleClick="toggleSideBar"
     />
-    <breadcrumb
-      id="breadcrumb-container"
-      class="breadcrumb-container"
-      v-if="!setting.topNav"
-    />
+    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" v-if="!setting.topNav" />
     <top-nav id="topmenu-container" class="topmenu-container" v-if="setting.topNav" />
 
     <div class="right-menu">
@@ -28,18 +24,18 @@
         <el-dropdown @command="handleCommand" class="right-menu-item hover-effect" trigger="click">
           <div class="avatar-wrapper">
             <img :src="user.avatar" class="user-avatar" />
-            <el-icon><ep-caret-bottom/></el-icon>
+            <el-icon><ep-caret-bottom /></el-icon>
           </div>
           <template #dropdown>
             <el-dropdown-menu>
               <router-link to="/user/profile">
-                <el-dropdown-item>{{$t('navbar.profile')}}</el-dropdown-item>
+                <el-dropdown-item>{{ $t('navbar.profile') }}</el-dropdown-item>
               </router-link>
               <el-dropdown-item command="setLayout">
-                <span>{{$t('navbar.setLayout')}}</span>
+                <span>{{ $t('navbar.setLayout') }}</span>
               </el-dropdown-item>
               <el-dropdown-item divided command="logout">
-                <span>{{$t('navbar.logout')}}</span>
+                <span>{{ $t('navbar.logout') }}</span>
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -52,7 +48,7 @@
 <script lang="ts" setup>
 import useStore from '@/store'
 
-const {app,user,setting} = useStore()
+const { app, user, setting } = useStore()
 
 const toggleSideBar = () => {
   app.toggleSidebar()
@@ -89,7 +85,6 @@ const emits = defineEmits(['setLayout'])
 function setLayout() {
   emits('setLayout')
 }
-
 </script>
 
 <style lang="scss" scoped>

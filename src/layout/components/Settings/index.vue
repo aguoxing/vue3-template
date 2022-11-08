@@ -102,8 +102,12 @@
 
     <el-divider />
 
-    <el-button type="primary" plain @click="saveSetting">保存配置</el-button>
-    <el-button plain @click="resetSetting">重置配置</el-button>
+    <el-button type="primary" plain @click="saveSetting">
+      <ep:document /> 保存配置
+    </el-button>
+    <el-button plain @click="resetSetting">
+      <ep:refresh /> 重置配置
+    </el-button>
   </el-drawer>
 </template>
 
@@ -114,7 +118,7 @@ import { useDynamicTitle } from '@/utils/dynamicTitle'
 import { handleThemeStyle } from '@/utils/theme'
 
 import useStore from '@/store'
-const {app,setting,permission} = useStore()
+const { app, setting, permission } = useStore()
 
 const { proxy } = getCurrentInstance()
 const showSettings = ref(false)

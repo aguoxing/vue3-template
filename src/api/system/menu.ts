@@ -1,11 +1,20 @@
 import request from '@/utils/request'
 
 // 查询菜单列表
-export function listMenu(query) {
+export function listMenu(data) {
   return request({
     url: '/system/menu/list',
-    method: 'get',
-    params: query
+    method: 'post',
+    data: data
+  })
+}
+
+// 分页查询菜单列表
+export function listTreeByPage(data) {
+  return request({
+    url: '/system/menu/listTreeByPage',
+    method: 'post',
+    params: data
   })
 }
 

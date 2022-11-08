@@ -15,7 +15,7 @@ export default function createComponents() {
     resolvers: [
       IconsResolver({
         prefix: false,
-        enabledCollections: ['ep'],
+        enabledCollections: ['ep']
       }),
       ElementPlusResolver()
     ],
@@ -38,6 +38,6 @@ export default function createComponents() {
 
     // filters for transforming targets
     include: [/\.vue$/, /\.vue\?vue/],
-    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
+    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/]
   })
 }

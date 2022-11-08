@@ -36,8 +36,6 @@ export default function createAutoImport() {
       globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
     },
     dts: 'src/types/auto-import.d.ts', // 生成 `auto-import.d.ts` 全局声明
-    resolvers: [
-      ElementPlusResolver()
-    ]
+    resolvers: [ElementPlusResolver()]
   })
 }

@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import useStore from '@/store'
-const {tagsView} = useStore()
+const { tagsView } = useStore()
 
 const route = useRoute()
 </script>

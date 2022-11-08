@@ -1,4 +1,3 @@
-import { Ids } from '@/types/api/base'
 import request from '@/utils/request'
 
 const server_name = '/system/config'
@@ -8,14 +7,14 @@ export function listConfig(data) {
   return request({
     url: `${server_name}/list`,
     method: 'post',
-    params: data
+    data: data
   })
 }
 
 // 查询参数详细
 export function getConfig(configId) {
   return request({
-    url: '/system/config/' + configId,
+    url: `${server_name}/` + configId,
     method: 'get'
   })
 }
@@ -23,7 +22,7 @@ export function getConfig(configId) {
 // 根据参数键名查询参数值
 export function getConfigKey(configKey) {
   return request({
-    url: '/system/config/configKey/' + configKey,
+    url: `${server_name}/configKey/` + configKey,
     method: 'get'
   })
 }
@@ -31,7 +30,7 @@ export function getConfigKey(configKey) {
 // 新增参数配置
 export function addConfig(data) {
   return request({
-    url: '/system/config',
+    url: `${server_name}`,
     method: 'post',
     data: data
   })
@@ -40,14 +39,14 @@ export function addConfig(data) {
 // 修改参数配置
 export function updateConfig(data) {
   return request({
-    url: '/system/config',
+    url: `${server_name}`,
     method: 'put',
     data: data
   })
 }
 
 // 删除参数配置
-export function delConfig(ids: Ids) {
+export function delConfig(ids) {
   return request({
     url: `${server_name}`,
     method: 'delete',
@@ -58,7 +57,7 @@ export function delConfig(ids: Ids) {
 // 刷新参数缓存
 export function refreshCache() {
   return request({
-    url: '/system/config/refreshCache',
+    url: `${server_name}/refreshCache`,
     method: 'delete'
   })
 }

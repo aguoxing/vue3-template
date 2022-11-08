@@ -14,7 +14,10 @@
       >
         {{ tag.title }}
         <span v-if="!isAffix(tag)" @click.prevent.stop="closeSelectedTag(tag)">
-          <ep:circle-close-filled class="el-icon-close" style="width: 1em; height: 1em; vertical-align: middle" />
+          <ep:circle-close-filled
+            class="el-icon-close"
+            style="width: 1em; height: 1em; vertical-align: middle"
+          />
         </span>
       </router-link>
     </scroll-pane>
@@ -45,8 +48,7 @@
 import { getNormalPath } from '@/utils/ruoyi'
 
 import useStore from '@/store'
-const {tagsView,setting,permission} = useStore()
-
+const { tagsView, setting, permission } = useStore()
 
 const visible = ref(false)
 const top = ref(0)

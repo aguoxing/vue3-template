@@ -65,7 +65,7 @@ const useUserStore = defineStore({
       })
     },
     // 退出系统
-    logOut() {
+    logout() {
       return new Promise((resolve, reject) => {
         logout()
           .then(() => {

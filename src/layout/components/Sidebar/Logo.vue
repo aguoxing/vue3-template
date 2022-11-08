@@ -42,7 +42,7 @@ import variables from '@/assets/styles/variables.module.scss'
 import logo from '@/assets/vue.svg'
 
 import useStore from '@/store'
-const {setting} = useStore()
+const { setting } = useStore()
 
 defineProps({
   collapse: {

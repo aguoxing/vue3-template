@@ -11,7 +11,7 @@ export default function createVitePlugins(viteEnv: any, isBuild = false) {
   vitePlugins.push(createSvgIcon(isBuild))
   vitePlugins.push(createAutoImport())
   vitePlugins.push(createComponents())
-  vitePlugins.push(Icons({autoInstall: true}))
+  vitePlugins.push(Icons({ autoInstall: true }))
   vitePlugins.push(createMockServer())
   isBuild && vitePlugins.push(...createCompression(viteEnv))
   return vitePlugins

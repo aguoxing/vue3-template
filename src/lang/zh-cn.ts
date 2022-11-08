@@ -18,6 +18,6 @@ export default {
   navbar: {
     profile: '个人中心',
     setLayout: '布局设置',
-    logout: '退出登录',
+    logout: '退出登录'
   }
 }

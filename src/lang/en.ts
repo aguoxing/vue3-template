@@ -19,6 +19,6 @@ export default {
   navbar: {
     profile: 'profile',
     setLayout: 'setLayout',
-    logout: 'Logout',
+    logout: 'Logout'
   }
 }

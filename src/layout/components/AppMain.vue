@@ -13,7 +13,7 @@
 
 <script lang="ts" setup>
 import useStore from '@/store'
-const {tagsView} = useStore()
+const { tagsView } = useStore()
 </script>
 
 <style lang="scss" scoped>
